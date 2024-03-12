@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/ver_entidad.css">
+    <link rel="stylesheet" href="/css/inicio.css">
+</head>
+<body>
+    <header>
+        <h1>Sistema de Apoyo a Comunidades con Movilidad Reducida</h1>
+        <div class="user-info">
+            {{#if usuario}}
+            <p class="user-name">Usuario: {{usuario.getNameUser}}</p>
+            {{/if}}
+            <form action="/logoff" method="post">
+            <button class="btn-logout">Log Out</button>
+            </form>
+        </div>
+    </header>
+    <nav>
+        <a href="/inicio">Home</a>
+        <a href="/nosotros">Nosotros</a>
+        <a href="/comunidades">Comunidades</a>
+        <a href="/servicios">Servicios</a>
+    </nav>
+    <main>
+        <div id="page-content">
+            <h2>Monitoreo de Estado de Servicios de Transporte Público y de Establecimientos</h2>
+            <div class="content-wrapper">
+                <div class="panel" style="border-collapse: unset; border-style: solid; border-collapse: collapse; border-color: rgba(0, 0, 0, 0.1); border-radius: 5px; border-width: 2px;">
+                    <h3 style="margin-top: 5px;">Ver una Entidad</h3>
+                    <div class="content-row">
+                        <label>Nombre:</label>
+                        <label>{{entidad.getNombre}}</label>
+                    </div>
+
+                    <div class="content-row">
+                        <label>Tipo:</label>
+                        <label>{{entidad.getTipoDeEntidad}}</label>
+                    </div>
+
+                    <div class="content-row">
+                        <label>Localización:</label>
+                        <label>{{entidad.lugarDeActividad}}</label>
+                    </div>
+
+
+                    {{#if puedeVerInteres}}
+                    <form method="post" action="/miembros/marcarInteres?entidad_id={{entidad.getId}}">
+                        {{#if estaInteresado}}
+                        <button type="submit" class="btn" style="margin-top: 10px; margin-bottom: 5px;">Desmarcar interés</button>
+                        {{else}}
+                        <button type="submit" class="btn" style="margin-top: 10px; margin-bottom: 5px;">Marcar interés</button>
+                        {{/if}}
+                    </form>
+                    {{/if}}
+                </div>
+
+                <div class="panel">
+                    <div class="content-row">
+                        <h3 style="margin-bottom: 0px;">Establecimientos</h3>
+                        {{#if puedeModificar}}
+                        <a href="/entidades/asociar?id={{entidad.getId}}">Agregar</a>
+                        {{/if}}
+                    </div>
+                    <div>
+                        <table class="data-table">
+                            <tbody>
+                            {{#each establecimientos}}
+                                <tr>
+                                    <td>{{this.nombreMostrado}}</td>
+                                    <td style="width: 10%;">
+                                        <div>
+                                            <a class="btn" style="padding: 0px 15px;" href="/establecimientos/ver?id={{this.getId}}">...</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            {{/each}}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <div class="content-row">
+                        <a style="width: 110px;" class="btn" href="/inicio">Ir a inicio</a>
+                        <a style="width: 110px;" class="btn" href="/entidades/ver">Ver entidades</a>
+                    </div>
+                    <div style="margin-top: 5px;" class="content-row">
+                    {{#if puedeModificar}}
+                        <a style="width: 110px;" class="btn" href="/entidades/remover?id={{entidad.getId}}">Dar de baja</a>
+                        <a style="width: 110px;" class="btn" href="/entidades/modificar?id={{entidad.getId}}">Modificar</a>
+                    {{/if}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="css/estilos.css">
+      <title>DDS/TPA - Servicios</title>
+  </head>
+  
+  <body>
+    <div id="page-content" style="margin-top: 50px;">
+      <h2 style="text-align: center;">Monitoreo de Estado de Servicios de Transporte Público y de Establecimientos</h2>
+      <div style="display: flex; justify-content: center;">
+        <div id="register-form-container" class="panel" style="width: 100%; max-width: 300px">
+          <h3 style="margin-top: auto;">Registrarse</h3>
+          <form action="registrarse" method="post">
+            <div class="control-group">
+              <div> <label for="">Nombre</label> </div>
+              <input name="nombre" type="text" value="" maxlength="50">
+            </div>
+            <div class="control-group">
+              <div> <label for="">Apellido</label> </div>
+              <input name="apellido" type="text" value="" maxlength="50">
+            </div>
+            <div class="control-group">
+              <div> <label for="">Usuario</label> </div>
+              <input name="usuario" type="text" value="" maxlength="50">
+            </div>
+            <div class="control-group">
+              <div> <label for="">Contraseña</label> </div>
+              <input name="password" type="password" value="" maxlength="50">
+            </div>
+            <div class="control-group">
+              <div> <label for="">Repetir contraseña</label> </div>
+              <input name="passwordRepeat" type="password" value="" maxlength="50">
+            </div>
+            <div class="control-group">
+              <div> <label for="">Email</label> </div>
+              <input name="email" type="text" value="" maxlength="50">
+            </div>
+
+            {{#if registro_error}}
+            <p style="color: crimson;">*Error: datos incompletos/erróneos.</p>
+            {{/if}}
+
+            <div style="margin-top: 20px;">
+              <input type="submit" value="Registrarse" class="btn btn-register">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

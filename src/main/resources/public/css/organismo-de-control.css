@@ -1,0 +1,175 @@
+/* Estilos generales del body */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilos del encabezado */
+.header {
+    background: linear-gradient(to bottom right, #CDFFD8, #94B9FF);
+    color: #000;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-title {
+    margin: 0;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+}
+
+.user-name {
+    color: #000;
+    margin-right: 20px;
+    font-weight: bold;
+}
+
+.btn-login,
+.btn-logout {
+    background: #000;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    outline: none;
+}
+
+.btn-login:hover,
+.btn-logout:hover {
+    background: #333;
+}
+
+/* Estilos de la navegación */
+.navigation {
+    background: #3498db;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+.navigation a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: bold;
+}
+
+/* Estilos del contenido principal */
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* height: 100vh; */
+    padding: 20px;
+}
+
+main h2,
+main h3 {
+    text-align: center;
+}
+/* Estilos para la tabla */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.data-table td, .data-table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.data-table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #f2f2f2;
+    color: #000;
+}
+/* Estilos de la tabla */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table,
+th,
+td {
+    border: 1px solid #ddd;
+}
+
+th,
+td {
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+    color: #000;
+}
+
+/* Estilos para los label */
+label {
+    font-weight: bold;
+}
+
+/* Estilos para los href */
+a[href*="asociar"] {
+    display: block;
+    width: fit-content;
+    margin: 0 auto;
+}
+main {
+    width: 75%;
+    margin: 0 auto; /* Centra el contenido */
+}
+label {
+    border-bottom: none;
+}
+.table-wrapper {
+    margin-top: 10px;
+    overflow-x: auto;
+}
+
+.info-table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.info-table td, .info-table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.info-table th {
+    background-color: #f2f2f2;
+}
+
+/* Estilos para botones */
+.btn-agregar, .btn-acciones {
+    background: #000;
+    color: #fff;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.btn-agregar:hover, .btn-acciones:hover {
+    background: #333;
+    text-decoration: none;
+}

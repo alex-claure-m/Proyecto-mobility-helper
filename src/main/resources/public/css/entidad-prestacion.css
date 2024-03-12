@@ -1,0 +1,123 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background: linear-gradient(to bottom right, #CDFFD8, #94B9FF);
+    color: #000;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    margin: 0;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+}
+
+.user-name {
+    color: #000;
+    margin-right: 20px;
+    font-weight: bold;
+}
+
+.btn-login,
+.btn-logout {
+    background: #000;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    outline: none;
+}
+
+.btn-login:hover,
+.btn-logout:hover {
+    background: #333;
+}
+
+nav {
+    background: #3498db;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: bold;
+}
+.main {
+    width: 75%; /* 3/4 del ancho total */
+    margin: 0 auto; /* Centrar el contenido */
+}
+
+.tables-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    box-sizing: border-box;
+    gap: 20px; /* Espacio entre las tablas */
+}
+
+.table-entity,
+.table-establishment {
+    width: 100%; /* Ocupa todo el ancho */
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.table-establishment a {
+    display: block;
+    margin-top: 10px;
+}
+
+.table-info table {
+    width: 100%;
+}
+.establishment-name {
+    padding: 5px;
+    display: inline-block; /* Mantiene el contenido en línea */
+    margin-bottom: 5px; /* Espacio hacia abajo */
+    border: none; /* Elimina el borde */
+}
+/* Estilo para la línea divisora */
+.division-line {
+    width: 100%; /* Ocupa todo el ancho disponible */
+    border-top: 1px solid #ccc; /* Crea la línea divisora */
+    margin-bottom: 5px; /* Espacio hacia abajo */
+}
+/* Estilo para los puntos suspensivos (botón) */
+.btn-view {
+    display: inline-block;
+    padding: 1px 1px; /* Reducir el padding para hacer más pequeño el botón */
+    margin: 2px;
+    font-size: 12px; /* Tamaño de la fuente reducido */
+    cursor: pointer;
+    text-decoration: none;
+    color: #fff;
+    background-color: #000; /* Cambiar el color a negro */
+    border: 1px solid transparent;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.btn-view:hover {
+    background-color: #333; /* Cambiar el color de fondo al pasar el cursor */
+}

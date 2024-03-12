@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comunidades</title>
+    <link rel="stylesheet" href="/css/inicio.css">
+    <link rel="stylesheet" href="/css/ver_comunidades.css">
+</head>
+<body>
+    <header>
+        <h1>Sistema de Apoyo a Comunidades con Movilidad Reducida</h1>
+        <div class="user-info">
+        {{#if usuario.getNameUser}}
+        <p class="user-name">Usuario: {{usuario.getNameUser}}</p>
+        {{/if}}
+        <form action="/logoff" method="post">
+            <button class="btn-logout">Log Out</button>
+        </form>
+    </div>
+    </header>
+    <nav>
+        <a href="/inicio">Home</a>
+        <a href="/nosotros">Nosotros</a>
+        <a href="/comunidades">Comunidades</a>
+        <a href="/servicios">Servicios</a>
+    </nav>
+    <main style="flex-direction: column; width: 100%;" class="main-container">
+        <h2 class="title">Listado de Comunidades registradas en el Sistema</h2> <!-- Agregar una clase "title" al título -->
+        <table style="width: 100%;" class="community-table">
+            <thead>
+                <tr>
+                    <th style="width: 90%;">Nombre de la Comunidad</th>
+                    <!--th>Servicios definidos</th-->
+                    <th style="width: 10%;"></th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each comunidades}}
+                <tr>
+                    <td>{{this.getNombre}}</td>
+                    <!--td>{{!this.nombresServiciosCreados}}</td-->
+                    <td>
+                    <a style="text-decoration: none;" class="btn-add" href="/comunidad/ver_comunidad/{{this.getId}}">...</a>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+
+        <h2 class="title">Mis Comunidades</h2> <!-- Agregar una clase "title" al título -->
+                <table style="width: 100%;" class="community-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 90%;">Nombre de la Comunidad</th>
+                            <!--th>Servicios definidos</th-->
+                            <th style="width: 10%;"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each misComunidades}}
+                        <tr>
+                            <td>{{this.getNombre}}</td>
+                            <!--td>{{!this.nombresServiciosCreados}}</td-->
+                            <td>
+                            <a style="text-decoration: none;" class="btn-add" href="/comunidad/ver_comunidad/{{this.getId}}">...</a>
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+
+                <div>
+                <a class="btn" href="/inicio" style="width: 164px">Ir a Inicio</a>
+                <a class="btn" href="/comunidad/crear_comunidad">Crear una comunidad</a>
+                </div>
+    </main>
+</body>
+</html>

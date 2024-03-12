@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="../css/estilos.css">
+      <link rel="stylesheet" href="../css/listados.css">
+      <title>establecimientos.html</title>
+  </head>
+  
+  <body>
+    <div id="page-content">
+      <h2 style="text-align: center;">Monitoreo de Estado de Servicios de Transporte Público y de Establecimientos</h2>
+      <div class="center-content">
+        <div style="width: 70%;">
+          <h3 style="text-align: center;">Listado de Establecimientos registrados en el Sistema</h3>
+          <table>
+            <thead>
+              <tr class="table-h-row">
+                <th class="table-h" style="width: 50%;"> <span>Establecimiento</span> </th>
+                <th class="table-h" style="width: 40%;"> <span>Ubicación geográfica</span> </th>
+                <th class="table-h" style="width: 10%;"> <span></span> </th>
+              </tr>
+            </thead>
+            <tbody>
+            {{#each establecimientos}}
+              <tr class="table-row">
+                <td class="text-truncate"> <span class="cell-content">{{this.nombreMostrado}}</span> </td>
+                <td class="text-truncate"> <span class="cell-content">{{this.ubicacionMostrada}}</span> </td>
+                <td>
+                  <div class="actions-panel">
+                    <a class="table-action-btn" href="incidente/abrir/{{this.getId}}">inc</a>
+                    <a class="table-action-btn" href="establecimiento/{{this.getId}}">...</a>
+                    <a class="table-action-btn" href="establecimiento/remover/{{this.getId}}">x</a>
+                  </div>
+                </td>
+              </tr>
+            {{/each}}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

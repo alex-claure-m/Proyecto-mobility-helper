@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Listado de Establecimientos</title>
+    <link rel="stylesheet" href="/css/lista_establecimientos.css">
+</head>
+
+<body>
+<header>
+    <h1>Sistema para Personas con Discapacidad</h1>
+    <div class="user-info">
+        {{#if usuario.getNameUser}}
+        <p class="user-name">Usuario: {{usuario.getNameUser}}</p>
+        {{else}}
+        <!-- No mostrar nada cuando el usuario no ha iniciado sesión -->
+        {{/if}}
+        {{#if usuario.getNameUser}}
+        <form action="/logoff" method="post">
+            <button class="btn-logout">Log Out</button>
+        </form>
+        {{else}}
+        <button class="btn-login">Log In</button>
+        {{/if}}
+    </div>
+</header>
+<nav>
+    <a href="/home">Home</a>
+    <a href="/nosotros">Nosotros</a>
+    <a href="/comunidades">Comunidades</a>
+    <a href="/servicios">Servicios</a>
+    <a href="/entidades">Entidades</a>
+</nav>
+
+<div id="page-content">
+    <h2>Monitoreo de Estado de Servicios de Transporte Público y de Establecimientos</h2>
+    <div>
+        <div>
+            <h3>Listado de Establecimientos registrados en el Sistema</h3>
+            <table>
+                <thead>
+                <tr>
+                    <th>Establecimiento</th>
+                    <th>Ubicación Geográfica</th>
+                    <th>Acciones</th>
+                </tr>
+                </thead>
+                <tbody>
+                {{#each establecimientos}}
+                <tr>
+                    <td>{{this.nombreMostrado}}</td>
+                    <td>{{this.ubicacionMostrada}}</td>
+                    <td>
+                        <div class="actions-panel">
+                            <a class="table-action-btn" href="/establecimientos/ver?id={{this.getId}}">...</a>
+                            <!--
+                            <a class="table-action-btn" href="/abrir-incidente/{{this.getId}}">Abrir Incidente</a>
+                            <a class="table-action-btn" href="/establecimiento/{{this.getId}}">+</a>
+                            <a class="table-action-btn" href="/establecimiento/remover/{{this.getId}}">x</a>
+                            -->
+                        </div>
+                    </td>
+                </tr>
+                {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+</body>
+
+</html>

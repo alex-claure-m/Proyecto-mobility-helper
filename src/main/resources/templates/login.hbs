@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Página de inicio de sesión</title>
+  <link rel="stylesheet" href="css/login.css">
+  <!-- <img src="img/loggin.jpg" alt="Personas con movilidad reducida"> -->
+</head>
+<body>
+  <!--div class="background-image">
+    <img src="img/loggin.jpg" alt="Personas con movilidad reducida">
+  </div-->
+  <div class="container">
+    <h2>SisAPM </h2>
+    <h3>Sistema de Ayuda a Personas con Movilidad Reducida </h3>
+    <form action="" method="post">
+      <input style="border: 1px solid #ddd; width: 100%; box-sizing: border-box;" type="text" name="usuario" placeholder="Nombre de usuario">
+      <input style="border: 1px solid #ddd; width: 100%; box-sizing: border-box;" type="password" name="password" placeholder="Contraseña">
+      <!-- <button type="submit">Iniciar sesión</button> -->
+      <!--label for="rol">Rol:</label-->
+
+      <!--select name="rol" id="rol">
+        <option value="miembro">Miembro</option>
+        <option value="admin_plataforma">Administrador de Plataforma</option>
+        <option value="rep_entidad">Representante de Entidad</option-->
+        <!-- Agregar más opciones de rol según tu base de datos -->
+      <!--/select-->
+      <button style="width: 100%;" type="submit">Iniciar sesión</button>
+         {{#if login_error}}
+          <p style="color: crimson;">*Error: usuario y/o contraseña incorrectos.</p>
+         {{/if}}
+
+      <p class="registration-link">Si no está registrado, <a href="/registrarse">regístrese</a> por favor.</p>
+    </form>
+  </div>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/ver_establecimiento.css">
+    <link rel="stylesheet" href="/css/ver_comunidad_particular.css">
+    <link rel="stylesheet" href="/css/inicio.css">
+</head>
+<body>
+    <header>
+        <h1>Sistema de Apoyo a Comunidades con Movilidad Reducida</h1>
+        <div class="user-info">
+            {{#if usuario.getNameUser}}
+            <p class="user-name">Usuario: {{usuario.getNameUser}}</p>
+            {{/if}}
+            <form action="/logoff" method="post">
+            <button class="btn-logout">Log Out</button>
+            </form>
+        </div>
+    </header>
+    <nav>
+        <a href="/inicio">Home</a>
+        <a href="/nosotros">Nosotros</a>
+        <a href="/comunidades">Comunidades</a>
+        <a href="/servicios">Servicios</a>
+    </nav>
+
+    <main style="min-height: unset" class="main-content">
+        <div class="establecimiento-details">
+            <h2>Comunidad: {{comunidad.getNombre}}</h2>
+            <div class="establecimiento-info" style="display: flex; flex-direction: column; align-items: center;">
+                <div style="margin-bottom: unset;" class="establecimiento-property">
+                    <label class="property-name">Creada por:</label>
+                    <label class="property-value">{{comunidad.getCreadaPor.getNameUser}}</label>
+                </div>
+
+                <div class="establecimiento-property">
+                    <label class="property-name">Incidentes reportados activos:</label>
+                    <label class="property-value">{{comunidad.cantidadIncidentesActivos}}</label>
+                </div>
+
+                <div class="prestaciones-section">
+                    <h3 class="prestaciones-header">Miembros</h3>
+                    <div class="prestaciones-table">
+                        <table style="width: 600px; border: 2px solid #d1d1d1; border-collapse: collapse; border-radius: 10px;">
+                            <tbody>
+                            {{#each miembros}}
+                                <tr>
+                                    <td style="text-align: start;" class="prestacion-item">{{this.getNombre}} {{this.getApellido}}</td>
+                                    <td style="width: 10%;" class="prestacion-action">
+                                        <a style="padding: 0px 15px;" class="btn" href="/miembros/ver?id={{this.getId}}">...</a>
+                                    </td>
+                                    {{#if puedeModificar}}
+                                    <td style="width: 10%;" class="prestacion-action">
+                                        <a style="padding: 0px 15px;" class="btn" href="/comunidad/sacar?id={{comunidad.getId}}&miembro_id={{this.getId}}">x</a>
+                                    </td>
+                                    {{/if}}
+                                </tr>
+                            {{/each}}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="action-buttons" style="display: flex; align-items: flex-end;">
+                    <a style="width: 110px;" class="btn" href="/inicio">Ir a inicio</a>
+                    {{#if puedeUnirse}}
+                    <form method="post" action="/comunidad/unirse?id={{comunidad.getId}}">
+                        <button style="margin-top: 10px; height: 45px; width: 150px;" type="submit" class="btn">Unirse</button>
+                    </form>
+                    {{else}}
+                    <form method="post" action="/comunidad/salir?id={{comunidad.getId}}">
+                        <button style="margin-top: 10px; height: 44px;" type="submit" class="btn">Dejar comunidad</button>
+                    </form>
+                    {{/if}}
+                </div>
+
+                {{#if puedeModificar}}
+                <div class="action-buttons" style="display: flex; align-items: flex-end; margin-top: 5px;">
+                    <a style="width: 110px;" class="btn" href="/comunidad/editar/{{comunidad.getId}}">Modificar</a>
+                    <a style="width: 110px;" class="btn" href="/comunidad/remover/{{comunidad.getId}}">Dar de baja</a>
+                </div>
+                {{/if}}
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

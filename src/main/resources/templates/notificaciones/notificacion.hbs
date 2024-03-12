@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/ver_prestacion.css">
+    <link rel="stylesheet" href="../css/inicio.css">
+</head>
+<body>
+    <header>
+        <h1>Sistema de Apoyo a Comunidades con Movilidad Reducida</h1>
+        <div class="user-info">
+            {{#if usuario}}
+            <p class="user-name">Usuario: {{usuario.getNameUser}}</p>
+            {{/if}}
+            <form action="/logoff" method="post">
+            <button class="btn-logout">Log Out</button>
+            </form>
+        </div>
+    </header>
+    <nav>
+        <a href="/inicio">Home</a>
+        <a href="/nosotros">Nosotros</a>
+        <a href="/comunidades">Comunidades</a>
+        <a href="/servicios">Servicios</a>
+    </nav>
+    <main>
+        <div id="page-content" style="width: 800px;">
+            <div class="content-wrapper">
+                <div class="panel" style="border-collapse: unset; border-style: solid; border-collapse: collapse; border-color: rgba(0, 0, 0, 0.1); border-radius: 5px; border-width: 2px; display: flex; flex-direction: column; align-items: center;">
+                    <h3 style="margin-top: 5px;">Notificación</h3>
+                    <div class="content-row">
+                        <label>{{tituloDeNoti}}</label>
+                    </div>
+
+                    <div class="content-row">
+                        <label>Hora:</label>
+                        <label>{{fechaHoraDeNoti}}</label>
+                    </div>
+
+                    <div class="content-row" style="margin-top: 20px; text-align: start; max-width: 500px;">
+                        <label>{{textoDeNoti}}</label>
+                    </div>
+
+                    <div style="margin-top: 20px;"></div>
+                    <a style="width: 110px;" class="btn" href="/incidentes/ver?id={{incidenteId}}">Ver incidente</a>
+                    <div style="margin-top: 10px;"></div>
+                </div>
+
+                <div class="panel">
+                    <div class="content-row" style="margin-top: 20px;">
+                        <a style="width: 110px;" class="btn" href="/inicio">Ir a inicio</a>
+                        <a style="width: 110px;" class="btn" href="/notificaciones/remover?id={{notiId}}">Remover</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

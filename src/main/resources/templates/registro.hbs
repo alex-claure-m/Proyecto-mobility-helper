@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/registro.css">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;700&display=swap" rel="stylesheet">
+    <title>Registro de Usuario</title>
+</head>
+<body>
+    <div class="container">
+        <header>
+        <h1>Registrarse</h1>
+        <p>Agradecemos tu participación en nuestra plataforma.</p>
+        <p>Por favor, completa el siguiente formulario para crear tu cuenta.</p>
+        </header>
+        <form action="/registrarse" method="post">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" placeholder="Ingresa tu nombre" name="nombre" required>
+
+            <label for="apellido">Apellido:</label>
+            <input type="text" id="apellido" placeholder="Ingresa tu apellido" name="apellido" required>
+
+            <label for="usuario">Nombre de usuario:</label>
+            <input type="text" id="usuario" placeholder="Elige un nombre de usuario" name="usuario" required>
+
+            <label for="contrasena">Contraseña:</label>
+            <input type="password" id="password" placeholder="Ingresa una contraseña segura" name="password" required>
+
+            <label for="contrasena-repeat">Repetir Contraseña:</label>
+            <input type="password" id="passwordRepeat" placeholder="Repite la contraseña" name="passwordRepeat" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" placeholder="Ingresa tu correo electrónico" name="email" required>
+
+            {{#if registro_error}}
+            <p style="margin-bottom: 10px; color: crimson;">*Error: {{registro_error}}.</p>
+            {{/if}}
+            <button type="submit" class="btn-registro">Registrarse</button>
+        </form>
+    </div>
+</body>
+</html>

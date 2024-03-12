@@ -1,0 +1,114 @@
+/* Estilos CSS */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background: linear-gradient(to bottom right, #CDFFD8, #94B9FF);
+    color: #000;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Estilos generales del layout */
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Ocupa toda la altura de la pantalla */
+    margin: 0;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+}
+
+.user-name {
+    color: #000;
+    margin-right: 20px;
+    font-weight: bold;
+}
+
+.btn-login,
+.btn-logout {
+    background: #000;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    outline: none;
+}
+
+.btn-login:hover,
+.btn-logout:hover {
+    background: #333;
+}
+nav {
+    background: #3498db;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: bold;
+}
+
+main {
+    padding: 20px;
+}
+
+
+
+nav {
+    background: #3498db;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+/* Estilos específicos del image-container */
+.image-container {
+    flex-grow: 1; /* Ocupa todo el espacio disponible */
+    /* background: linear-gradient(to bottom right, #CDFFD8, #94B9FF);*/
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-container img {
+    max-width: 100%; /* Ajusta el ancho de la imagen al ancho del contenedor */
+}
+
+/* Estilos para los botones */
+.container {
+    text-align: center;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.boton {
+    margin: 10px;
+    padding: 10px 20px;
+    background-color: #007BFF; /* Color azul de fondo */
+    color: #fff; /* Texto blanco */
+    border: 2px solid #007BFF; /* Borde azul de 2px */
+    border-radius: 5px; /* Bordes circulares de 5px */
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.boton:hover {
+    background-color: #0056b3; /* Color azul más oscuro en el hover */
+}

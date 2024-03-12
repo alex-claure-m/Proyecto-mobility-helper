@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>crear.html</title>
+    <link rel="stylesheet" href="/css/ver_entidades.css">
+</head>
+
+<body>
+    <header class="header">
+        <h1 class="header-title">Sistema para Personas con Discapacidad</h1>
+        <div class="user-info">
+            {{#if usuario.getNameUser}}
+                <p class="user-name">Usuario: {{usuario.getNameUser}}</p>
+            {{else}}
+                <!-- No mostrar nada cuando el usuario no ha iniciado sesión -->
+            {{/if}}
+            {{#if usuario.getNameUser}}
+                <form action="/logoff" method="post">
+                    <button class="btn-logout">Log Out</button>
+                </form>
+            {{else}}
+                <button class="btn-login">Log In</button>
+            {{/if}}
+        </div>
+    </header>
+    <nav class="navigation">
+        <a href="/home">Home</a>
+        <a href="/nosotros">Nosotros</a>
+        <a href="/comunidades">Comunidades</a>
+        <a href="/servicios">Servicios</a>
+        <a href="/entidades">Entidades</a>
+    </nav>
+    <main class="main">
+        <div id="page-content" class="page-content">
+            <h2 class="section-title">Monitoreo de Estado de Servicios de Transporte Público y de Establecimientos</h2>
+            <div class="content">
+                <div class="list">
+                    <h3 class="list-title">Listado de Entidades registradas en el Sistema</h3>
+                    <table class="table">
+                        <thead>
+                            <tr class="table-row">
+                                <th class="table-header">Nombre</th>
+                                <th class="table-header">Tipo de Entidad</th>
+                                <th class="table-header">Localización</th>
+                                <th class="table-header"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each entidades}}
+                            <tr class="table-row">
+                                <td class="table-data">{{this.getNombre}}</td>
+                                <td class="table-data">{{this.getTipoDeEntidad}}</td>
+                                <td class="table-data">{{this.getLugarDeActividad}}</td>
+                                <td class="table-data">
+                                    <div class="table-action">
+                                        <a href="/entidades/ver?id={{this.getId}}">...</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="panel">
+                    <div class="panel-content">
+                        <a href="/inicio" class="panel-link">Ir a inicio</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

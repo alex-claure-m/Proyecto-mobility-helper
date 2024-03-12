@@ -1,0 +1,27 @@
+como implementar el uso de esta API?
+que seria mejor ? por cada provincia ? me devolveria solo provincia segun por cada consulta a la api
+ --> a lo sumo con lat/longitud
+
+
+o por cada departamento? me devolveria el id del departamento ; lat/long ; nombre y la provincia al cual le pertenece
+ --> para esto cuando haya una emergencia/INCIDENTE entonces le deberia settear la provincia y departamento?
+    --> raro ... PREGUNTAR
+ EJEMPLO QUERY -> https://apis.datos.gob.ar/georef/api/departamentos?provincia=jujuy&max=16
+
+
+o por municipio? donde tendre como en los ANTERIORES, lista de OBJETOS
+    que sera: lat/long; id municipio; nombre Municipio; provincia_id; nombre_provincia al cual esta ese municipio
+
+ EJEMPLO QUERY -> https://apis.datos.gob.ar/georef/api/municipios?provincia=tucuman&aplanar
+
+ // localidades y todo eso, quiero creer que ya no entra
+  https://apis.datos.gob.ar/georef/api/localidades?provincia=chubut&campos=nombre
+ // listado de calle veo que tampoco entra. al menos que seas jugado y te mandes
+  https://apis.datos.gob.ar/georef/api/calles?departamento=rio chico&categoria=avenida
+
+
+
+https://datosgobar.github.io/georef-ar-api/quick-start/
+ejemplos de uso
+
+https://datosgobar.github.io/georef-ar-api/open-api/

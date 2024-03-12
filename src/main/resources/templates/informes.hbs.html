@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="css/estilos.css">
+      <link rel="stylesheet" href="css/listados.css">
+      <title>informes.html</title>
+  </head>
+  
+  <body>
+    <div id="page-content">
+      <h2 style="text-align: center;">Monitoreo de Estado de Servicios de Transporte Público y de Establecimientos</h2>
+      <div class="center-content">
+        <div style="display: flex; flex-direction: column; align-items: center;">
+          <h4 style="text-align: center;">Informe de Rankings</h4>
+          <div class="panel" style="min-width: 400px; max-width: 400px;">
+            {{#if no_disponible}}
+            <label style="font-size: larger; text-align: center;">Archivo no disponible, inténtelo más tarde.</label>
+            {{else}}
+            <label>Formato: {{archivo_formato}}</label>
+            <label>Tamaño total: {{archivo_tamanio}}</label>
+            <label>Fecha y hora: {{archivo_fecha}}</label>
+            <form style="width: 100%" action="/informe" method="post">
+              <button class="btn" style="margin-top: 20px;" type="submit">Descargar</button>
+            </form>
+            {{/if}}
+            <a style="margin-top: 5px;" class="btn" href="/inicio">Ir a inicio</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

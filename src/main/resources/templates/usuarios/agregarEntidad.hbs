@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="/css/agregarEntidad.css">
+     <!-- <link rel="stylesheet" href="../css/listados.css"> -->
+      <title>agregarEntidad.html</title>
+  </head>
+
+  <body>
+    <header class="header">
+        <h1 class="header-title">Sistema de Apoyo a Comunidades con Movilidad Reducida</h1>
+        <div class="user-info">
+            {{#if usuario.getNameUser}}
+                <p class="user-name">Usuario: {{usuario.getNameUser}}</p>
+            {{else}}
+                <!-- No mostrar nada cuando el usuario no ha iniciado sesión -->
+            {{/if}}
+            {{#if usuario.getNameUser}}
+                <form action="/logoff" method="post">
+                    <button class="btn-logout">Log Out</button>
+                </form>
+            {{else}}
+                <button class="btn-login">Log In</button>
+            {{/if}}
+        </div>
+    </header>
+    <main>
+        <div id="page-content">
+        <h2>Monitoreo de Estado de Servicios de Transporte Público y de Establecimientos</h2>
+        <div>
+            <div>
+            <h3>Seleccionar una Entidad para: {{nombre}}</h3>
+            <table>
+                <thead>
+                <tr>
+                    <th> <span>Nombre</span> </th>
+                    <th> <span>Tipo de Entidad</span> </th>
+                    <th> <span>Localización</span> </th>
+                    <th> <span></span> </th>
+                </tr>
+                </thead>
+                <tbody>
+                {{#each entidades}}
+                <tr>
+                    <td> <span>{{this.getNombre}}</span> </td>
+                    <td> <span>{{this.getTipoDeEntidad}}</span> </td>
+                    <td> <span>{{this.lugarDeActividad}}</span> </td>
+                    <td>
+                    <div>
+                        {{#if entidadPrestadora}}
+                        <form method="post" action="/prestadora/asociar?id={{entidadPrestadora.getId}}&entidad_id={{this.getId}}">
+                        {{/if}}
+                        {{#if organismoDeControl}}
+                        <form method="post" action="/reguladora/asociar?id={{organismoDeControl.getId}}&entidad_id={{this.getId}}">
+                        {{/if}}
+                            <button type="submit">SELECT</button>
+                        </form>
+                    </div>
+                    </td>
+                </tr>
+                {{/each}}
+                </tbody>
+            </table>
+            </div>
+
+            <div style="text-align: center;">
+            <div>
+                <a href="/inicio" class="btn" >Ir a inicio</a>
+                {{#if entidadPrestadora}}
+                <a href="/entidades/crear?prestadora_id={{entidadPrestadora.getId}}"class="btn">Dar de alta</a> {{!Administrador de Plataforma}}
+                {{/if}}
+            </div>
+            </div>
+            </div>
+        </div>
+    </main>
+
+  </body>
+</html>

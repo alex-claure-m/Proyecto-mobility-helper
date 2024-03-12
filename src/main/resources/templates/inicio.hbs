@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/inicio.css">
+    <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script>
+        const options = {
+          enableHighAccuracy: false,
+          timeout: 5000,
+          maximumAge: 0,
+        };
+
+        function enviarLaUbicacion(pos) {
+            $.post("/miembros/setearUbicacion",
+                    {
+                        lat: pos.coords.latitude,
+                        lon: pos.coords.longitude
+                    }
+            );
+        }
+
+        function errorAlEnviarLaUbicacion(err) {
+            console.warn(`enviarLaUbicacion: ERROR(${err.code}): ${err.message}`)
+        }
+
+        //obtiene la posición actual si el navegador lo permite
+        navigator.geolocation.getCurrentPosition(enviarLaUbicacion, errorAlEnviarLaUbicacion, options);
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Sistema de Apoyo a Comunidades con Movilidad Reducida</h1>
+        <div class="user-info">
+            <p class="user-name">Usuario: {{usuario.getNameUser}}</p>
+            <form action="/logoff" method="post">
+            <button class="btn-logout">Log Out</button>
+            </form>
+        </div>
+    </header>
+    <nav>
+        <a href="/inicio">Home</a>
+        <a href="/nosotros">Nosotros</a>
+        <a href="/comunidades">Comunidades</a>
+        <a href="/servicios">Servicios</a>
+    </nav>
+    <main>
+        <div id="page-content" style="width: 700px; display: flex; flex-direction: column; align-items: stretch; flex-wrap: nowrap;">
+            <h3 class="text-truncate" style="margin-top: 5px; margin-bottom: 5px; max-width: 90%; align-self: center;">¡Bienvenido, {{miembro.getNombre}} {{miembro.getApellido}}!</h2>
+            <div id="main-container" style="border-collapse: unset; border-style: solid; border-collapse: collapse; border-color: rgba(0, 0, 0, 0.2); border-radius: 5px; border-width: 2px; margin-top: 20px;">
+                <div style="display: flex; justify-content: center; flex-direction: column; align-items: center;" class="panel">
+                    <h3 class="text-truncate" style="margin-top: 5px; margin-bottom: 10px; max-width: 90%;">Logueado como: <i>{{usuario.getNameUser}}</i></h3>
+                    <div id="info-panel-buttons">
+                        <div>
+                            <div style="display: flex; flex-direction: column; margin-bottom: 15px;">
+                                {{#if puedeVerUsuarios}}
+                                <label style="margin-top: 5px; text-align: justify; align-self: center;">Ver y administrar usuarios del sistema.</label>
+                                <a href="/usuarios/ver" style="width: 300px; align-self: center; margin-bottom: 10px;" class="btn">Ver Usuarios</a>
+                                {{/if}}
+
+                                {{#if puedeVerSuUsuario}}
+                                <label style="margin-top: 5px; text-align: justify; align-self: center;">Ver mis datos, dar de alta entidades, etc.</label>
+                                <a href="/ver-datos-usuario?id={{usuario.getId}}" style="width: 300px; align-self: center; margin-bottom: 10px;" class="btn">Ver mis datos</a>
+                                {{/if}}
+
+                                <label style="margin-top: 5px; text-align: justify; align-self: center;">Ir al listado de Entidades para ver el estado de cada servicio.</label>
+                                <a href="/entidades/ver" style="width: 300px; align-self: center;" class="btn">Ver Listado de Entidades</a>
+
+                                <label style="margin-top: 15px; text-align: justify; align-self: center;">Ver todos los incidentes reportados hasta el momento.</label>
+                                <a href="/incidentes/ver" style="width: 300px; align-self: center;" class="btn">Ver Incidentes</a>
+
+                                {{#if puedeVerComunidad}}
+                                <label style="margin-top: 15px; text-align: justify; align-self: center;">Ir al listado de Comunidades para unirse y participar en una comunidad.</label>
+                                <a href="/ver_comunidades" style="width: 300px; align-self: center;" class="btn">Ver Comunidades</a>
+                                {{/if}}
+
+                                {{#if puedeVerNotificaciones}}
+                                <label style="margin-top: 15px; text-align: justify; align-self: center;">Ver la lista de notificaciones pendientes.</label>
+                                <a href="/notificaciones/ver" style="width: 300px; align-self: center;" class="btn">Ver Notificaciones{{#if cantNotifSinLeer}} ({{cantNotifSinLeer}}){{/if}}</a>
+                                {{/if}}
+
+                                {{#if puedeVerInformes}}
+                                <label style="margin-top: 15px; text-align: justify; align-self: center;">Descargar el último informe de rankings de Entidades.</label>
+                                <a href="/informe" style="width: 300px; align-self: center;" class="btn">Informe de Rankings</a>
+                                {{/if}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="display: flex; justify-content: center; margin-top: 30px;">
+                <a href="/preferencias" style="width: 30%;"class="btn">Configuración</a>
+                <a href="/logoff" style="width: 30%;" class="btn">Salir</a>
+            </div>
+        </div>
+      </main>
+
+    </body>
+</html>

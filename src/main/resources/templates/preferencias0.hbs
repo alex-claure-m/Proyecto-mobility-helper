@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/inicio.css">
+    <script>
+        function onChangeMedioNoti() {
+            const inputTelefono = document.getElementById('nrotel');
+            const selectMedioNoti = document.getElementById('medio-noti');
+            if(selectMedioNoti.value == 0)
+                inputTelefono.setAttribute('disabled', '');
+            else if(selectMedioNoti.value == 1)
+                inputTelefono.removeAttribute('disabled');
+        }
+
+        function onChangeFormaNoti() {
+            const selectFormaNoti = document.getElementById('forma-noti');
+            const horaNoti = document.getElementById('hora-noti');
+            const minsNoti = document.getElementById('mins-noti');
+            if(selectFormaNoti.value == 0) {
+                horaNoti.setAttribute('disabled', '');
+                minsNoti.setAttribute('disabled', '');
+            }
+            else if(selectFormaNoti.value == 1) {
+                horaNoti.removeAttribute('disabled');
+                minsNoti.removeAttribute('disabled');
+            }
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Sistema de Apoyo a Comunidades con Movilidad Reducida</h1>
+        <div class="user-info">
+            <form action="/logoff" method="post">
+            <button class="btn-logout">Log Out</button>
+            </form>
+        </div>
+    </header>
+    <nav>
+        <a href="/inicio">Home</a>
+        <a href="/nosotros">Nosotros</a>
+        <a href="/comunidades">Comunidades</a>
+        <a href="/servicios">Servicios</a>
+    </nav>
+    <main>
+        <div id="page-content" style="width: 700px; display: flex; flex-direction: column; align-items: stretch; flex-wrap: nowrap;">
+            <h3 class="text-truncate" style="margin-top: 5px; margin-bottom: 5px; max-width: 90%; align-self: center;">Editar Preferencias</h2>
+            <div id="main-container" style="border-collapse: unset; border-style: solid; border-collapse: collapse; border-color: rgba(0, 0, 0, 0.2); border-radius: 5px; border-width: 2px; margin-top: 20px;">
+                <form method="post" action="">
+                <div style="display: flex; justify-content: center; flex-direction: column; align-items: center;" class="panel">
+                    <h3 class="text-truncate" style="margin-top: 5px; margin-bottom: 0px; max-width: 90%;">Notificaciones</i></h3>
+                    <div id="info-panel-buttons">
+                        <div>
+                            <div style="margin-top: 10px; display: flex; flex-direction: row; align-items: center; margin-bottom: 20px;">
+                                <label>Medio de notificación:</label>
+                                <select id="medio-noti" style="width: 100%; margin-left: 5px;" name="medio_noti_id" onclick="onChangeMedioNoti()">
+                                  <option {{#if actual_email}}selected{{/if}} value="0">Email</option>
+                                  <option {{#if actual_telefono}}selected{{/if}} value="1">Whatsapp</option>
+                                </select>
+                              </div>
+
+                              <div style="margin-top: 10px;display: flex;flex-direction: row;align-items: center;margin-bottom: 20px;">
+                                <label>Teléfono:</label>
+                                <input {{#if actual_email}}disabled{{/if}} style="width: 100%;margin-left: 5px;/* margin-top:0px; */" name="nro-tel" id="nrotel" {{#if actual_nroTelefono}}value="{{actual_nroTelefono}}"{{/if}}>
+                              </div>
+
+                              <div style="margin-top: 10px; display: flex; flex-direction: row; align-items: center; margin-bottom: 20px;">
+                                <label>Forma de notificación:</label>
+                                <select id="forma-noti" style="width: 100%; margin-left: 5px;" name="forma_noti_id" onchange="onChangeFormaNoti()">
+                                  <option {{#if actual_cuandoSuceden}}selected{{/if}} value="0">Cuando suceden</option>
+                                  <option {{#if actual_sinApuros}}selected{{/if}} value="1">Sin apuros</option>
+                                </select>
+                              </div>
+
+                              <div style="display: flex; flex-direction: row; align-items: center; margin-bottom: 20px;">
+                                <label>Horario de notificación:</label>
+                                <input {{#if actual_cuandoSuceden}}disabled{{/if}} id="hora-noti" maxlength="2" value="{{actual_hora}}" style="height: 100%; width: 20px; margin-left: 5px; margin-right: 2px;" type="text" name="hora" placeholder="HH">
+                                <label>:</label>
+                                <input {{#if actual_cuandoSuceden}}disabled{{/if}} id="mins-noti" maxlength="2" value="{{actual_mins}}" style="height: 100%; width: 22px; margin-left: 2px;" type="text" name="mins" placeholder="MM">
+                                <label style="margin-left: 2px;">hs</label>
+                              </div>
+                        </div>
+                    </div>
+                    {{#if error_descripcion}}
+                    <label style="color: crimson; margin-bottom: 15px;">ERROR: {{error_descripcion}}</label>
+                    {{/if}}
+                    {{#if cambiosGuardados}}
+                    <label style="font-weight: bold; margin-bottom: 15px;">Los cambios han sido guardados.</label>
+                    {{/if}}
+                </div>
+
+                <div style="display: flex; justify-content: center; margin-top: 10px; margin-bottom: 10px;">
+                    <button type="submit" href="/preferencias" style="width: 30%;"class="btn">Guardar</a>
+                </div>
+                </form>
+
+            </div>
+
+            <div style="display: flex; justify-content: center; margin-top: 30px;">
+                <a href="/inicio" style="width: 30%;"class="btn">Ir a inicio</a>
+            </div>
+        </div>
+      </main>
+
+    </body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/lista_establecimientos.css">
+    <link rel="stylesheet" href="/css/inicio.css">
+</head>
+<body>
+    <header>
+        <h1>Sistema de Apoyo a Comunidades con Movilidad Reducida</h1>
+        <div class="user-info">
+            {{#if usuario}}
+            <p class="user-name">Usuario: {{usuario.getNameUser}}</p>
+            {{/if}}
+            <form action="/logoff" method="post">
+            <button class="btn-logout">Log Out</button>
+            </form>
+        </div>
+    </header>
+    <nav>
+        <a href="/inicio">Home</a>
+        <a href="/nosotros">Nosotros</a>
+        <a href="/comunidades">Comunidades</a>
+        <a href="/servicios">Servicios</a>
+    </nav>
+
+<div id="page-content">
+    <h2>Monitoreo de Estado de Servicios de Transporte Público y de Establecimientos</h2>
+    <div>
+        <div>
+            <h3>Listado de Establecimientos registrados en el Sistema</h3>
+            <table style="width: 70%; border: 2px solid #d1d1d1; border-collapse: collapse; border-radius: 10px;">
+                <thead>
+                <tr>
+                    <th style="width: 45%;">Establecimiento</th>
+                    <th style="width: 50%;">Ubicación Geográfica</th>
+                    <th style="width: 5%;"></th>
+                </tr>
+                </thead>
+                <tbody>
+                {{#each establecimientos}}
+                <tr>
+                    <td>{{this.nombreMostrado}}</td>
+                    <td>{{this.ubicacionMostrada}}</td>
+                    <td>
+                        <div class="actions-panel">
+                            <a class="table-action-btn" href="/establecimientos/ver?id={{this.getId}}">...</a>
+                        </div>
+                    </td>
+                </tr>
+                {{/each}}
+                </tbody>
+            </table>
+        </div>
+
+        <div style="margin-top: 20px;" class="panel">
+            <div class="panel-content">
+                <a class="btn-logout" href="/inicio">Ir a inicio</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+
+</html>

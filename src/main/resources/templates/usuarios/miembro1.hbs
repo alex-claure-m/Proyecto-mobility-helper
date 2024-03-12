@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/ver_establecimiento.css">
+  <link rel="stylesheet" href="../css/inicio.css">
+</head>
+<body>
+<header>
+  <h1>Sistema de Apoyo a Comunidades con Movilidad Reducida</h1>
+  <div class="user-info">
+    {{#if usuario}}
+    <p class="user-name">Usuario: {{usuario.getNameUser}}</p>
+    {{/if}}
+    <form action="/logoff" method="post">
+      <button class="btn-logout">Log Out</button>
+    </form>
+  </div>
+</header>
+<nav>
+  <a href="/inicio">Home</a>
+  <a href="/nosotros">Nosotros</a>
+  <a href="/comunidades">Comunidades</a>
+  <a href="/servicios">Servicios</a>
+</nav>
+
+<main class="main-content">
+  <div class="establecimiento-details">
+    <h2 style="margin-top: 5px;">Ver Miembro de Comunidad</h2>
+    <div class="establecimiento-info" style="display: flex; flex-direction: column; align-items: center;">
+    <div style="border-collapse: unset; border-style: solid; border-collapse: collapse; border-color: rgba(0, 0, 0, 0.1); border-radius: 5px; border-width: 2px; width: 100%; display: flex; flex-direction: column; align-items: center;">
+      <div class="establecimiento-property">
+        <label class="property-name">Usuario:</label>
+        <label class="property-value">{{miembro.getUsuarioAsociado.getNameUser}}</label>
+      </div>
+
+      <div class="establecimiento-property">
+        <label class="property-name">Nombre:</label>
+        <label class="property-value">{{miembro.getNombre}}</label>
+      </div>
+
+      <div class="establecimiento-property">
+        <label class="property-name">Apellido:</label>
+        <label class="property-value">{{miembro.getApellido}}</label>
+      </div>
+
+      <div class="establecimiento-property">
+        <label class="property-name">Email:</label>
+        <label class="property-value">{{miembro.getCorreoElectronico}}</label>
+      </div>
+
+      {{#if miembroEsAdministradorComunidad}}
+      <div style="margin-top: 5px;" class="establecimiento-property">
+        <label class="property-value">ESTE USUARIO ES ADMINISTRADOR DE COMUNIDAD</label>
+      </div>
+      {{/if}}
+    </div>
+
+      <div class="prestaciones-section">
+        <h3 class="prestaciones-header">Comunidades</h3>
+
+        <div class="prestaciones-table">
+          <table style="width: 600px; border: 2px solid #d1d1d1; border-collapse: collapse; border-radius: 10px;">
+            <tbody>
+            {{#each miembro.getComunidadesALasQuePertenece}}
+            <tr>
+              <td style="text-align: start;" class="prestacion-item">{{this.getNombre}}</td>
+              <td style="width: 10%;" class="prestacion-action">
+                <a style="padding: 0px 15px;" class="btn" href="/comunidades/ver?id={{this.getId}}">...</a>
+              </td>
+            </tr>
+            {{/each}}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div style="display: flex; flex-direction: row; margin-bottom: -20px;" class="action-buttons">
+        <a style="width: 160px;" href="/inicio">Ir a inicio</a>
+        <a style="width: 160px;" href="/miembros/remover?id={{miembro.getId}}">Dar de baja</a>
+      </div>
+      {{#if puedeDarPrivilegio}}
+        <div class="action-buttons" style="width: 100%; display: inline-flex; justify-content: center;">
+        <form method="post" action="/miembros/privilegio?id={{miembro.getId}}">
+            <button class="btn" type="submit">
+                {{#if miembroEsAdministradorComunidad}}
+                Remover rol Administrador de Comunidad
+                {{else}}
+                Otorgar rol Administrador de Comunidad
+                {{/if}}
+            </button>
+        </form>
+        </div>
+      {{/if}}
+      </div>
+    </div>
+  </div>
+</main>
+</body>
+
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ver_entidades.html</title>
+    <link rel="stylesheet" href="/css/ver_entidad.css">
+</head>
+
+<body>
+    <header class="header">
+        <h1 class="header-title">Sistema para Personas con Discapacidad</h1>
+        <div class="user-info">
+            {{#if usuario.getNameUser}}
+                <p class="user-name">Usuario: {{usuario.getNameUser}}</p>
+            {{else}}
+                <!-- No mostrar nada cuando el usuario no ha iniciado sesión -->
+            {{/if}}
+            {{#if usuario.getNameUser}}
+                <form action="/logoff" method="post">
+                    <button class="btn-logout">Log Out</button>
+                </form>
+            {{else}}
+                <button class="btn-login">Log In</button>
+            {{/if}}
+        </div>
+    </header>
+
+    <nav class="navigation">
+        <a href="/home">Home</a>
+        <a href="/nosotros">Nosotros</a>
+        <a href="/comunidades">Comunidades</a>
+        <a href="/servicios">Servicios</a>
+        <a href="/entidades">Entidades</a>
+    </nav>
+
+    <main>
+        <div id="page-content">
+            <h2>Monitoreo de Estado de Servicios de Transporte Público y de Establecimientos</h2>
+            <div class="content-wrapper">
+                <h3>Ver Entidad</h3>
+                <div class="panel">
+                    <div class="content-row">
+                        <label>Nombre:</label>
+                        <label>{{entidad.getNombre}}</label>
+                    </div>
+
+                    <div class="content-row">
+                        <label>Tipo:</label>
+                        <label>{{entidad.getTipoDeEntidad}}</label>
+                    </div>
+
+                    <div class="content-row">
+                        <label>Localización:</label>
+                        <label>{{entidad.lugarDeActividad}}</label>
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <div class="content-row">
+                        <h3>Establecimientos</h3>
+                        <a href="/entidades/asociar?id={{entidad.getId}}">Agregar</a> {{!Prestadora y Administrador de Plataforma}}
+                    </div>
+                    <div>
+                        <table class="data-table">
+                            <tbody>
+                                {{#each establecimientos}}
+                                <tr>
+                                    <td>{{this.getNombre}}</td>
+                                    <td>
+                                        <div>
+                                            <a href="/establecimientos/ver?id={{this.getId}}">...</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {{/each}}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <div class="content-row">
+                        <a href="/inicio">Ir a inicio</a>
+                        <a href="/entidades/ver">Ver entidades</a>
+                    </div>
+                    <div class="content-row">
+                        <a href="/entidad/remover?id={{entidad.getId}}">Dar de baja</a> {{!Administrador de Plataforma}}
+                        <a href="/entidad/modificar?id={{entidad.getId}}">Modificar</a> {{!Prestadora y Administrador de Plataforma}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

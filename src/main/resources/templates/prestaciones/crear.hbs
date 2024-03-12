@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="/css/crear_entidad.css">
+	<link rel="stylesheet" href="/css/inicio.css">
+</head>
+<body>
+<header>
+	<h1>Sistema de Apoyo a Comunidades con Movilidad Reducida</h1>
+	<div class="user-info">
+		{{#if usuario}}
+		<p class="user-name">Usuario: {{usuario.getNameUser}}</p>
+		{{/if}}
+		<form style="background-color: unset; border: unset;" action="/logoff" method="post">
+			<button class="btn-logout">Log Out</button>
+		</form>
+	</div>
+</header>
+<nav>
+	<a href="/inicio">Home</a>
+	<a href="/nosotros">Nosotros</a>
+	<a href="/comunidades">Comunidades</a>
+	<a href="/servicios">Servicios</a>
+</nav>
+<main style="height: unset;">
+	<div id="page-content">
+		<div>
+			<div>
+				<h3 style="text-align: center; margin-top: 5px;">Dar de alta un Servicio para: {{nombreEstablecimiento}}</h3>
+				<div>
+					<form action="" method="post">
+						<div style="display: flex; flex-direction: row; align-items: center;">
+							<label>Nombre:</label>
+							<input style="height: 100%; width: 100%; margin-left: 5px;" type="text" name="nombre" placeholder="e.g. Baños; Escalera mecánica; etc.">
+						</div>
+
+						{{#if error_descripcion}}
+						<label class="error-label">ERROR: {{error_descripcion}}</label>
+						{{/if}}
+
+						<input style="margin-top: 10px;" type="submit" value="Dar de alta" class="btn">
+					</form>
+				</div>
+
+				<div>
+					<div style="margin-top: 15px;">
+						<a class="btn" href="/inicio">Ir a inicio</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</main>
+</body>
+</html>

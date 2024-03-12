@@ -1,0 +1,102 @@
+/* Estilos CSS */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    height: 100vh; /* Ocupa toda la altura de la pantalla */
+    padding: 0;
+}
+
+header {
+    background: linear-gradient(to bottom right, #CDFFD8, #94B9FF);
+    color: #000;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.user-info {
+    display: flex;
+    align-items: center;
+}
+
+.user-name {
+    color: #000;
+    margin-right: 20px;
+    font-weight: bold;
+}
+
+.btn-login,
+.btn-logout {
+    background: #000;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    outline: none;
+}
+
+.btn-login:hover,
+.btn-logout:hover {
+    background: #333;
+}
+nav {
+    background: #3498db;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: bold;
+}
+
+main {
+    padding: 20px;
+}
+
+
+
+nav {
+    background: #3498db;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+/* Tabla */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.table-header {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+    background-color: #f2f2f2;
+}
+
+.table-row:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.table-row:nth-child(odd) {
+    background-color: #fff;
+}
+
+.table-data {
+    /*padding: 8px;*/
+}
+
+td {
+border-left: 1px solid #ddd;
+padding: 0px 10px;
+}

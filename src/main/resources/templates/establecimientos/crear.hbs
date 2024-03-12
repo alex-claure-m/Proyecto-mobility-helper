@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/crear_establecimiento.css">
+</head>
+<body>
+    <header>
+        <h1>Sistema de Apoyo a Comunidades con Movilidad Reducida</h1>
+        <div class="user-info">
+            {{#if usuario}}
+            <p class="user-name">Usuario: {{usuario.getNameUser}}</p>
+            {{/if}}
+            <form action="/logoff" method="post">
+            <button class="btn-logout">Log Out</button>
+            </form>
+        </div>
+    </header>
+    <nav>
+        <a href="/inicio">Home</a>
+        <a href="/nosotros">Nosotros</a>
+        <a href="/comunidades">Comunidades</a>
+        <a href="/servicios">Servicios</a>
+    </nav>
+      <main class="center-content" style="height: unset">
+        <div id="page-content">
+          <h2>Monitoreo de Estado de Servicios de Transporte Público y de Establecimientos</h2>
+          <div>
+            <h3>Dar de alta una {{tipo}}</h3>
+            <div class="form-container panel">
+              <form action="" method="post">
+                <div>
+                  <label>Nombre:</label>
+                  <input type="text" name="nombre" placeholder="e.g. Córdoba; Pueyrredón; Las Heras; etc.">
+                </div>
+
+                {{#if esEstacion}}
+                <div style="margin-top: 5px;">
+                  <label>Tipo de estación:</label>
+                  <select name="tipo_id">
+                    <option value="0">Seleccionar tipo</option>
+                    <option value="1">Estación de tren</option>
+                    <option value="2">Estación de subte</option>
+                    <option value="3">Estación de colectivo</option>
+                  </select>
+                </div>
+                {{/if}}
+
+                <div>
+                  <h4>Ubicación geográfica (aproximada)</h4>
+                  <div>
+                    <input type="text" name="lat" placeholder="latitud">
+                  </div>
+                  <div>
+                    <input type="text" name="lon" placeholder="longitud">
+                  </div>
+                </div>
+
+                {{#if error_descripcion}}
+                <label class="error-label">ERROR: {{error_descripcion}}</label>
+                {{/if}}
+
+                <input type="submit" value="Dar de alta" class="btn">
+              </form>
+            </div>
+
+            <div style="margin-top: 30px;" class="panel">
+              <div>
+                <a class="btn" href="/inicio">Ir a inicio</a>
+                <a class="btn" href="/establecimientos/ver">Ver listado</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+      </body>
+    </html>

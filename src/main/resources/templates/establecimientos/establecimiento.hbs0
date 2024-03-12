@@ -1,0 +1,202 @@
+<!--
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Listado de Establecimientos</title>
+    <link rel="stylesheet" href="establecimiento.css">
+</head>
+
+<body>
+    <header>
+        <h1>Sistema para Personas con Discapacidad</h1>
+        <div class="user-info">
+            {{#if usuario.getNameUser}}
+            <p class="user-name">Usuario: {{usuario.getNameUser}}</p>
+            {{else}}
+
+            {{/if}}
+            {{#if usuario.getNameUser}}
+            <form action="/logoff" method="post">
+                <button class="btn-logout">Log Out</button>
+            </form>
+            {{else}}
+            <button class="btn-login">Log In</button>
+            {{/if}}
+        </div>
+    </header>
+    <nav>
+        <a href="/home">Home</a>
+        <a href="/nosotros">Nosotros</a>
+        <a href="/comunidades">Comunidades</a>
+        <a href="/servicios">Servicios</a>
+        <a href="/entidades">Entidades</a>
+    </nav>
+    <body>
+        <div >
+            <h2 >Monitoreo de Estado de Servicios de Transporte Público y de Establecimientos</h2>
+            <div >
+                <div>
+                    <h3 >Ver Establecimiento</h3>
+                    <div >
+                        <div >
+                            <label>Nombre:</label>
+                            <label>{{establecimiento.nombreMostrado}}</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{#if tipoDeEstacion}}
+        <div>
+            <label>Tipo:</label> {{!mostrar en caso de ser Estación}}
+            <label>{{tipoDeEstacion}}</label>
+        </div>
+    {{/if}}
+
+    {{#if entidadAsociada}}
+        <div>
+            <label>Entidad:</label> {{!mostrar en caso de ser Sucursal}}
+            <a href="/entidades/ver?id={{entidadAsociada.getId}}">{{entidadAsociada.getNombre}}</a>
+        </div>
+    {{/if}}
+
+    <div>
+        <label>Ubicación:</label>
+        <label>{{establecimiento.ubicacionMostrada}}</label>
+    </div>
+
+    <div>
+        <h3>Prestaciones</h3>
+        <a href="/prestaciones/crear?establecimiento_id={{establecimiento.getId}}">Agregar</a> {{!Prestadora y Administrador de Plataforma}}
+
+        <div>
+            <table>
+                <tbody>
+                {{#each prestaciones}}
+                    <tr>
+                        <td> <div>{{this.nombreDelServicio}}</div> </td>
+                        <td>
+                            <div>
+                                <a href="/prestaciones/ver?id={{this.getId}}">...</a>
+                            </div>
+                        </td>
+                    </tr>
+                {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div>
+        <a href="/inicio">Ir a inicio</a>
+        <a href="/establecimientos/ver">Ver establecimientos</a>
+    </div>
+
+    <div>
+        <a href="/establecimiento/remover?id={{establecimiento.getId}}">Dar de baja</a> {{!Administrador de Plataforma}}
+        <a href="/establecimiento/modificar?id={{establecimiento.getId}}">Modificar</a> {{!Prestadora y Administrador de Plataforma}}
+    </div>
+</div>
+</body>
+</html>
+-->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Listado de Establecimientos</title>
+    <link rel="stylesheet" href="/css/ver_establecimiento.css">
+</head>
+
+<body>
+    <header class="header">
+        <h1>Sistema para Personas con Discapacidad</h1>
+        <div class="user-info">
+            {{#if usuario.getNameUser}}
+            <p class="user-name">Usuario: {{usuario.getNameUser}}</p>
+            {{else}}
+            <!-- No mostrar nada cuando el usuario no ha iniciado sesión -->
+            {{/if}}
+            {{#if usuario.getNameUser}}
+            <form action="/logoff" method="post">
+                <button class="btn-logout">Log Out</button>
+            </form>
+            {{else}}
+            <button class="btn-login">Log In</button>
+            {{/if}}
+        </div>
+    </header>
+
+    <nav class="navbar">
+        <a href="/home">Home</a>
+        <a href="/nosotros">Nosotros</a>
+        <a href="/comunidades">Comunidades</a>
+        <a href="/servicios">Servicios</a>
+        <a href="/entidades">Entidades</a>
+    </nav>
+
+    <main class="main-content">
+        <div class="establecimiento-details">
+            <h2>Monitoreo de Estado de Servicios de Transporte Público y de Establecimientos</h2>
+            <div class="establecimiento-info">
+                <div class="establecimiento-property">
+                    <label class="property-name">Nombre:</label>
+                    <label class="property-value">{{establecimiento.nombreMostrado}}</label>
+                </div>
+
+                {{#if tipoDeEstacion}}
+                <div class="establecimiento-property">
+                    <label class="property-name">Tipo:</label>
+                    <label class="property-value">{{tipoDeEstacion}}</label>
+                </div>
+                {{/if}}
+
+                {{#if entidadAsociada}}
+                <div class="establecimiento-property">
+                    <label class="property-name">Entidad:</label>
+                    <a class="property-value" href="/entidades/ver?id={{entidadAsociada.getId}}">{{entidadAsociada.getNombre}}</a>
+                </div>
+                {{/if}}
+
+                <div class="establecimiento-property">
+                    <label class="property-name">Ubicación:</label>
+                    <label class="property-value">{{establecimiento.ubicacionMostrada}}</label>
+                </div>
+
+                <div class="prestaciones-section">
+                    <h3 class="prestaciones-header">Prestaciones</h3>
+                    <a href="/prestaciones/crear?establecimiento_id={{establecimiento.getId}}">Agregar</a> {{!Prestadora y Administrador de Plataforma}}
+
+                    <div class="prestaciones-table">
+                        <table>
+                            <tbody>
+                                {{#each prestaciones}}
+                                <tr>
+                                    <td class="prestacion-item">{{this.nombreDelServicio}}</td>
+                                    <td class="prestacion-action">
+                                        <a href="/prestaciones/ver?id={{this.getId}}">...</a>
+                                    </td>
+                                </tr>
+                                {{/each}}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <a href="/inicio">Ir a inicio</a>
+                    <a href="/establecimientos/ver">Ver establecimientos</a>
+                    <a href="/establecimiento/remover?id={{establecimiento.getId}}">Dar de baja</a> {{!Administrador de Plataforma}}
+                    <a href="/establecimiento/modificar?id={{establecimiento.getId}}">Modificar</a> {{!Prestadora y Administrador de Plataforma}}
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

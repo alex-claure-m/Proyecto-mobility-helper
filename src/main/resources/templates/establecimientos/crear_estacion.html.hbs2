@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="../css/estilos.css">
+      <link rel="stylesheet" href="../css/listados.css">
+      <title>crearEstacion.html</title>
+  </head>
+  
+  <body>
+    <div id="page-content">
+      <h2 style="text-align: center;">Monitoreo de Estado de Servicios de Transporte Público y de Establecimientos</h2>
+      <div class="center-content">
+        <div>
+          <h3 style="text-align: center;">Dar de alta una Estación en el Sistema</h3>
+          <div class="form-container panel" style="min-width: 400px; max-width: 400px;">
+            <form action="" method="post">
+              <div style="display: flex; flex-direction: row; align-items: center;">
+                <label>Nombre:</label>
+                <input style="height: 100%; margin-left: 5px;" type="text" name="nombre" placeholder="e.g. Córdoba; Pueyrredón; Las Heras; etc.">
+              </div>
+
+              <div style="margin-top: 10px; display: flex; flex-direction: row; align-items: center;">
+                <label>Tipo de estación:</label>
+                <select style="width: 450px; height: 25px;" name="tipo_id">
+                  <option value="0">Seleccionar tipo</option>
+                  <option value="1">Estación de tren</option>
+                  <option value="2">Estación de subte</option>
+                  <option value="3">Estación de colectivo</option>
+                </select>
+              </div>
+
+              <div style="display: inline-flex; align-items: center;">
+              <h4>Ubicación geográfica (aproximada)</h4>
+                
+                <div style="display: flex;">
+                  <input style="margin-left: 5px; width: 130px;" type="text" name="lat" placeholder="latitud">
+                </div>
+
+                <div style="display: flex;">
+                  <input style="margin-left: 5px; width: 130px;" type="text" name="lon" placeholder="longitud">
+                </div>
+              </div>
+
+              {{#if error_descripcion}}
+              <label class="error-label">ERROR: {{error_descripcion}}</label>
+              {{/if}}
+
+              <div style="margin-top: 20px;">
+                <input type="submit" value="Dar de alta" class="btn">
+              </div>
+            </form>
+          </div>
+
+          <div class="panel" style="margin-top: 20px;">
+            <div style="display: flex;">
+              <a class="btn" href="">Volver a inicio</a>
+              <span style="margin: 10px"></span>
+              <a class="btn" href="">Ver estaciones</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

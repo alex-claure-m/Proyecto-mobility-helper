@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="/css/estilos.css">
+      <title>DDS/TPA - Servicios</title>
+  </head>
+  
+  <body>
+    <div id="page-content" style="margin-top: 50px;">
+      <h2 style="text-align: center;">Monitoreo de Estado de Servicios de Transporte Público y de Establecimientos</h2>
+      <div style="display: block; margin-top: 50px;"></div>
+        <h3 style="text-align: center;">Apertura de incidente</h3>
+        <div style="display: flex; justify-content: center;">
+          <div class="form-container">
+            <form action="/incidente/abrir" method="post">
+              <div style="display: flex; flex-direction: row; align-items: center;">
+                <label for="">Descripción:</label>
+                <input style="height: 100%; width: 100%; margin-left: 5px;" type="text" name="descripcion">
+              </div>
+
+              <div style="margin-top: 10px; display: flex; flex-direction: row; align-items: center; margin-bottom: 20px;">
+                <label for="">Comunidad:</label>
+                <select style="width: 100%; margin-left: 5px;" name="comunidad">
+                  <option value="0">Elegir comunidad</option>
+                  {{#each comunidades}}
+                  <option value="{{this.getId}}">{{this.getNombre}}</option>
+                  {{/each}}
+                </select>
+              </div>
+
+              <div style="margin-top: 20px; display: flex; flex-direction: row; align-items: center;">
+                <label for="">Servicio:</label>
+                <input style="height: 100%; width: 100%; margin-left: 5px;" type="text" name="servicio">
+              </div>
+
+              <div style="margin-top: 10px; display: flex; flex-direction: row; align-items: center;">
+                <label for="">Entidad:</label>
+                <input style="height: 100%; width: 100%; margin-left: 5px;" type="text" name="entidad">
+              </div>
+
+              <div style="margin-top: 10px; display: flex; flex-direction: row; align-items: center;">
+                <label for="">Establecimiento:</label>
+                <input style="height: 100%; width: 100%; margin-left: 5px;" type="text" name="establecimiento">
+              </div>
+
+              {{#if apertura_error}}
+              <p style="color: crimson;">*Error al abrir el incidente.</p>
+              {{/if}}
+
+              <div style="margin-top: 20px;">
+                <input type="submit" value="Abrir incidente" class="btn">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

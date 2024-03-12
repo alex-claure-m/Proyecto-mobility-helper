@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="css/estilos.css">
+      <title>DDS/TPA - Servicios</title>
+  </head>
+  
+  <body>
+    <div id="page-content" style="margin-top: 50px;">
+      <h2 style="text-align: center;">Monitoreo de Estado de Servicios de Transporte Público y de Establecimientos</h2>
+      <div style="display: flex; justify-content: center;">
+        <div id="login-form-container" class="panel" style="width: 100%; max-width: 300px">
+          <h2>Acceso - Login</h2>
+          <form method="post" action="" id="form_login">
+            <div class="control-group">
+              <div> <label for="">Usuario</label> </div>
+              <input name="usuario" type="text" value="" maxlength="50">
+            </div>
+
+            <div class="control-group">
+              <div> <label for="">Contraseña</label> </div>
+              <input name="password" type="password" value="" maxlength="50">
+            </div>
+
+            {{#if login_error}}
+            <p style="color: crimson;">*Error: usuario y/o contraseña incorrectos.</p>
+            {{/if}}
+
+            <div style="margin-top: 20px;">
+              <input type="submit" value="Ingresar" class="btn btn-login">
+            </div>
+          </form>
+
+          <div style="margin-top: 35px;"></div>
+          <h3 style="margin-bottom: 15px;">Crear una cuenta</h3>
+          <a href="registrarse" class="btn">Registrarse</a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

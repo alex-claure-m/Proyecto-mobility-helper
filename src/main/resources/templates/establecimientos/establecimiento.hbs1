@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/ver_establecimiento.css">
+    <link rel="stylesheet" href="../css/inicio.css">
+</head>
+<body>
+    <header>
+        <h1>Sistema de Apoyo a Comunidades con Movilidad Reducida</h1>
+        <div class="user-info">
+            {{#if usuario}}
+            <p class="user-name">Usuario: {{usuario.getNameUser}}</p>
+            {{/if}}
+            <form action="/logoff" method="post">
+            <button class="btn-logout">Log Out</button>
+            </form>
+        </div>
+    </header>
+    <nav>
+        <a href="/inicio">Home</a>
+        <a href="/nosotros">Nosotros</a>
+        <a href="/comunidades">Comunidades</a>
+        <a href="/servicios">Servicios</a>
+    </nav>
+
+    <main class="main-content">
+        <div class="establecimiento-details">
+            <h2>Monitoreo de Estado de Servicios de Transporte Público y de Establecimientos</h2>
+            <div class="establecimiento-info" style="display: flex; flex-direction: column; align-items: center;">
+                <div class="establecimiento-property">
+                    <label class="property-name">Nombre:</label>
+                    <label class="property-value">{{establecimiento.nombreMostrado}}</label>
+                </div>
+
+                {{#if tipoDeEstacion}}
+                <div class="establecimiento-property">
+                    <label class="property-name">Tipo:</label>
+                    <label class="property-value">{{tipoDeEstacion}}</label>
+                </div>
+                {{/if}}
+
+                {{#if entidadAsociada}}
+                <div class="establecimiento-property">
+                    <label class="property-name">Entidad:</label>
+                    <a class="property-value" href="/entidades/ver?id={{entidadAsociada.getId}}">{{entidadAsociada.getNombre}}</a>
+                </div>
+                {{/if}}
+
+                <div class="establecimiento-property">
+                    <label class="property-name">Ubicación:</label>
+                    <label class="property-value">{{establecimiento.ubicacionMostrada}}</label>
+                </div>
+
+                <div class="prestaciones-section">
+                    <h3 class="prestaciones-header">Prestaciones</h3>
+                    <a href="/prestaciones/crear?establecimiento_id={{establecimiento.getId}}">Agregar</a>
+
+                    <div class="prestaciones-table">
+                        <table style="width: 600px; border: 2px solid #d1d1d1; border-collapse: collapse; border-radius: 10px;">
+                            <tbody>
+                            {{#each prestaciones}}
+                                <tr>
+                                    <td style="text-align: start;" class="prestacion-item">{{this.nombreDelServicio}}</td>
+                                    <td style="width: 10%;" class="prestacion-action">
+                                        <a style="padding: 0px 15px;" class="btn" href="/prestaciones/ver?id={{this.getId}}">...</a>
+                                    </td>
+                                </tr>
+                            {{/each}}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <a href="/inicio">Ir a inicio</a>
+                    <a href="/establecimientos/ver">Ver establecimientos</a>
+                    {{#if puedeDarDeBaja}}
+                    <a href="/establecimiento/remover?id={{establecimiento.getId}}">Dar de baja</a>
+                    {{/if}}
+                    {{#if puedeModificar}}
+                    <a href="/establecimiento/modificar?id={{establecimiento.getId}}">Modificar</a>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

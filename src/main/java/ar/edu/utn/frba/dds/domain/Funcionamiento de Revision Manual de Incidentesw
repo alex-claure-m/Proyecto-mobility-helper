@@ -1,0 +1,20 @@
+Esto ocurre cuando el miembro pasa justamente CERCA de un incidente, haciendo que le sea notificado
+ -> que cosa le debe ser notificado? -> que verifique si existe o persiste aun el incidente
+
+ * pero por que le llega esta notifacion?
+    -> xq justamente pertenece a una comunidad en el que fue alertada que hubo incidente anteriormente
+
+ * y que hace exactamente esto o que activa?
+    -> cuando un miembro decide pasar cerca de un incidente, le debe llegar una notificacion para
+       ver si el incidente esta o no , asi le settea que el incidente esta cerrado o sigue abierto
+
+ * y que parametros debe tener esta interfaz / clase de calculador de distancia?
+    -> debe tener la localizacion de incidentes y la ubicacion del miembro (setteada)
+    -> en el cual mediante otro parametro llamdo DistanciaParaActivarNotificacion compare con el resultado de ese
+        CalculadorDeDistancia
+
+
+----------------------------------------
+ * y si el incidente realmente no esta mas?
+    -> ok, lo que debe suceder es settear a IncidenteCerrado = TRUE -> diciendo que el incidnete no esta mas
+    -> avisar a todos los miembros de la comunidad que el incidente fue cerrado

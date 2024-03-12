@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layout Simple</title>
+    <link rel="stylesheet" href="/css/mostrar_incidente.css">
+</head>
+<body>
+    <header>
+        <h1>Sistema para invalidos</h1>
+        <div class="user-info">
+            {{#if usuario.getNameUser}}
+                       <p class="user-name">Usuario: {{usuario.getNameUser}}</p>
+             {{else}}
+                       <!-- No mostrar nada cuando el usuario no ha iniciado sesión -->
+             {{/if}}
+              {{#if usuario.getNameUser}}
+                   <button class="btn-logout">Log Out</button>
+              {{else}}
+                       <button class="btn-login">Log In</button>
+              {{/if}}
+        </div>
+    </header>
+    <nav>
+        <a href="/inicio">Home</a>
+        <a href="/nosotros">Nosotros</a>
+        <a href="/comunidades">Comunidades</a>
+        <a href="/servicios">Servicios</a>
+    </nav>
+    <main class="main-container">
+        <div class="container">
+            {{#with incidente}}
+                <h2>Detalles del Incidente</h2>
+                <hr class="line-separator">
+                <table>
+
+                    <tr>
+                        <th>Descripción Completa:</th>
+                        <td>{{descripcionDelIncidente}}</td>
+                    </tr>
+                    <tr>
+                        <th>Abierto por:</th>
+                        <td>{{nombreDeQuienAbrio}}</td>
+                    </tr>
+                    <tr>
+                        <th>Horario de Apertura:</th>
+                        <td>{{horaDelIncidente}}</td>
+                    </tr>
+                </table>
+                <form method="post" action="/incidente/cerrar/{{incidenteId}}">
+                    <button class="btn-cerrar" name="cerrar">Cerrar Incidente</button>
+                </form>
+            </div>
+        {{/with}}
+    </main>
+</body>
+</html>

@@ -1,0 +1,18 @@
+cuando un miembro ve un Incidente, decide dar de alta, describiendolo, con cabezera , fecha, etc
+
+esto hace varias cosas como:
+    * poner False a incidenteCerrado - dando alusión a que el incidente esta abierto-
+
+    * desde Miembro al abrir un incidente se lo agrega a su propia lista de incidentes abiertos
+
+    * desde miembro al abrir un incidente lo agrega a la lista de incidentes reportados en Comunidad
+
+    * esto para que lo hace? → bueno para luego comunicarselo a los miembros pertenecientes
+      de esa comunidad (falta implementacion)
+
+------------------------------
+
+que ocurre cuando cierro un incidente?
+    * bueno, cuando se cierra un incidente debo settear a incidenteCerrado = TRUE -> dando idea de que el incidnete
+        se cerro ya que no lo hay
+    * avisar con una notificacion sobre el cierre del incidnete a todos los miembros de la comunidad!

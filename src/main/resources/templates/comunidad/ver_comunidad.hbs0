@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles de la Comunidad</title>
+    <link rel="stylesheet" href="/css/ver_comunidad_particular.css">
+</head>
+<body>
+    <header>
+        <h1>Sistema de ayuda para personas con movilidad reducida</h1>
+        <div class="user-info">
+        {{#if usuario.getNameUser}}
+            <p class="user-name">Usuario: {{usuario.getNameUser}}</p>
+        {{else}}
+            <!-- No mostrar nada cuando el usuario no ha iniciado sesión -->
+        {{/if}}
+        {{#if usuario.getNameUser}}
+            <button class="btn-logout">Log Out</button>
+        {{else}}
+            <button class="btn-login">Log In</button>
+        {{/if}}
+    </header>
+    <nav>
+        <a href="/home">Home</a>
+        <a href="/nosotros">Nosotros</a>
+        <a href="/comunidades">Comunidades</a>
+        <a href="/servicios">Servicios</a>
+        <a href="/entidades">Entidades</a>
+    </nav>
+    <main class="community-details">
+        <h2 class="title">Detalles de la Comunidad</h2>
+        <div class="community-info">
+            <h3>Nombre de la Comunidad: {{comunidad.getNombre}}</h3>
+            <p>Miembros:</p>
+            <ul>
+                {{#each comunidad.getMiembros}}
+                <li>{{this}}</li>
+                {{/each}}
+            </ul>
+            <div class="community-actions">
+                <a href="/inicio">Inicio</a>
+                <form action="/comunidad/darbaja?id={{comunidad.getId}}" method="post">
+                    <button type="submit">Dar de baja</button>
+                </form>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="../css/estilos.css">
+      <title>crear.html</title>
+  </head>
+  
+  <body>
+    <div id="page-content">
+      <h2 style="text-align: center;">Monitoreo de Estado de Servicios de Transporte Público y de Establecimientos</h2>
+      <div class="center-content">
+        <div>
+          <h3 style="text-align: center;">
+          {{#if modificar}}
+          Modificar: {{nombreEntidad}}
+          {{/if}}
+          {{#if entidadPrestadora}}
+          Dar de alta una Entidad para: {{entidadPrestadora.getNombre}}
+          {{/if}}
+          </h3>
+          <div class="form-container panel" style="min-width: 400px; max-width: 400px;">
+            <form action="" method="post">
+              <div style="display: flex; flex-direction: row; align-items: center;">
+                <label>Nombre:</label>
+                <input{{#if modificar}} value="{{nombreEntidad}}"{{/if}} style="height: 100%; width: 100%; margin-left: 5px;" type="text" name="nombre" placeholder="e.g. Línea B de Subte; Banco Santander; etc.">
+              </div>
+
+              <div style="margin-top: 10px; display: flex; flex-direction: row; align-items: center; margin-bottom: 20px;">
+                <label>Tipo de entidad:</label>
+                <select style="width: 100%; margin-left: 5px;" name="tipo_id">
+                  <option value="0">Seleccione tipo</option>
+                  <option value="1">Línea de Transporte</option>
+                  <option value="2">Empresa Prestadora</option>
+                </select>
+              </div>
+
+              <div style="margin-top: 30px;"></div>
+              <h4>Localización (lugar de actividad):</h4>
+                
+              <div style="margin-top: 20px; display: flex; flex-direction: row; align-items: center;">
+                <label>Provincia:</label>
+                <input{{#if modificar}} value="{{nombreProvincia}}"{{/if}} style="height: 100%; width: 100%; margin-left: 5px;" type="text" name="nombre-prov" placeholder="(Obligatorio)">
+                </input>
+              </div>
+
+              <div style="margin-top: 20px; display: flex; flex-direction: row; align-items: center;">
+                <label>Municipio:</label>
+                <input{{#if modificar}} value="{{nombreMunicipio}}"{{/if}} style="height: 100%; width: 100%; margin-left: 5px;" type="text" name="nombre-mncp" placeholder="(Opcional)">
+              </div>
+
+              {{#if error_descripcion}}
+              <label class="error-label">ERROR: {{error_descripcion}}</label>
+              {{/if}}
+
+              {{#if modificar}}
+              <input type="submit" value="Modificar" class="btn">
+              {{else}}
+              <input type="submit" value="Dar de alta" class="btn">
+              {{/if}}
+            </form>
+          </div>
+
+          <div class="panel" style="margin-top: 20px; min-width: 400px; max-width: 400px;">
+            <div style="width: 100%; display: inline-flex;">
+              <a style="margin: 3px" class="btn" href="/inicio">Ir a inicio</a>
+              <a style="margin: 3px" class="btn" href="/entidades/ver">Ver listado</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

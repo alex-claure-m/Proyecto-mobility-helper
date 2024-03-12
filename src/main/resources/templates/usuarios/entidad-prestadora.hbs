@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/entidad-prestacion.css">
+    <!-- <link rel="stylesheet" href="inicio.css"> -->
+</head>
+<body>
+    <header>
+        <h1>Sistema de Apoyo a Comunidades con Movilidad Reducida</h1>
+        <div class="user-info">
+            {{#if usuario}}
+            <p class="user-name">Usuario: {{usuario.getNameUser}}</p>
+            {{/if}}
+            <form action="/logoff" method="post">
+                <button class="btn-logout">Log Out</button>
+            </form>
+        </div>
+    </header>
+    <nav>
+        <a href="/inicio">Home</a>
+        <a href="/nosotros">Nosotros</a>
+        <a href="/comunidades">Comunidades</a>
+        <a href="/servicios">Servicios</a>
+    </nav>
+    <main>
+        <div id="page-content">
+            <h2>Monitoreo de Estado de Servicios de Transporte Público y de Establecimientos</h2>
+            <div class="tables-container">
+                <div class="table-entity">
+                    <h3>Entidad Prestadora: {{entidadPrestadora.getNombre}}</h3>
+                    <div class="table-info">
+                        <table>
+                            <tr>
+                                <td>Usuario:</td>
+                                <td><a href="">{{entidadPrestadora.getUsuarioAsociado.getNameUser}}</a></td>
+                            </tr>
+                            <tr>
+                                <td>Rubro:</td>
+                                <td>{{entidadPrestadora.getRubro}}</td>
+                            </tr>
+                            <tr>
+                                <td>País de origen:</td>
+                                <td>{{entidadPrestadora.getPais}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="table-establishment">
+                    <h3>Establecimientos Asociados</h3>
+                    <a href="/prestadora/asociar?id={{entidadPrestadora.getId}}">Agregar</a>
+                    <div class="table-info">
+                        <table>
+                            {{#each entidades}}
+                            <tr>
+                                <td >
+                                    <div class="division-line"></div>
+                                    <div class="establishment-name">{{this.getNombre}}</div>
+                                </td>
+                                <td>
+                                    <a href="/entidades/ver?id={{this.getId}}"  class="btn-view">...</a>
+                                </td>
+                            </tr>
+                            {{/each}}
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

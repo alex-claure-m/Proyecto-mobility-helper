@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/ver_entidad.css">
+    <link rel="stylesheet" href="/css/inicio.css">
+</head>
+<body>
+    <header>
+        <h1>Sistema de Apoyo a Comunidades con Movilidad Reducida</h1>
+        <div class="user-info">
+            {{#if usuario}}
+            <p class="user-name">Usuario: {{usuario.getNameUser}}</p>
+            {{/if}}
+            <form action="/logoff" method="post">
+            <button class="btn-logout">Log Out</button>
+            </form>
+        </div>
+    </header>
+    <nav>
+        <a href="/inicio">Home</a>
+        <a href="/nosotros">Nosotros</a>
+        <a href="/comunidades">Comunidades</a>
+        <a href="/servicios">Servicios</a>
+    </nav>
+    <main style="padding: unset;">
+        <div id="page-content">
+            <h2>Monitoreo de Estado de Servicios de Transporte Público y de Establecimientos</h2>
+            <div class="content-wrapper">
+                <div class="panel" style="border-collapse: unset; border-style: solid; border-collapse: collapse; border-color: rgba(0, 0, 0, 0.1); border-radius: 5px; border-width: 2px;">
+                    <h3 style="margin-top: 5px;">Ver usuario de la plataforma</h3>
+                    <div class="content-row">
+                        <label>Usuario:</label>
+                        <label>{{miembro.getUsuarioAsociado.getNameUser}}</label>
+                    </div>
+
+                    <div class="content-row">
+                        <label>Nombre:</label>
+                        <label>{{miembro.getNombre}}</label>
+                    </div>
+
+                    <div class="content-row">
+                        <label>Apellido:</label>
+                        <label>{{miembro.getApellido}}</label>
+                    </div>
+
+                    <div class="content-row">
+                        <label>Email:</label>
+                        <label>{{miembro.getCorreoElectronico}}</label>
+                    </div>
+
+                    {{#if miembroEsAdministradorComunidad}}
+                    <div style="margin-top: 5px;" class="content-row">
+                        <label>ESTE USUARIO ES ADMINISTRADOR DE COMUNIDAD</label>
+                    </div>
+                    {{/if}}
+
+                    {{#if puedeDarPrivilegio}}
+                    <div style="margin-top: 5px;" class="content-row">
+                        <div style="width: 100%; display: inline-flex; justify-content: center; margin-top: 10px; margin-bottom: 10px;">
+                            <form method="post" action="/miembros/privilegio?id={{miembro.getUsuarioAsociado.getId}}">
+                                <button style="height: 44px; width: 315px;" class="btn" type="submit">
+                                    {{#if miembroEsAdministradorComunidad}}
+                                    Remover rol Administrador de Comunidad
+                                    {{else}}
+                                    Otorgar rol Administrador de Comunidad
+                                    {{/if}}
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    {{/if}}
+                </div>
+
+                <div class="panel">
+                    <div class="content-row">
+                        <h3 style="margin-bottom: 0px;">Comunidades</h3>
+                    </div>
+                    <div>
+                        <table class="data-table">
+                            <tbody>
+                            {{#each miembro.getComunidadesALasQuePertenece}}
+                                <tr>
+                                    <td>{{this.getNombre}}</td>
+                                    <td style="width: 10%;">
+                                        <div>
+                                            <a style="padding: 0px 15px;" class="btn" href="/comunidad/ver_comunidad/{{this.getId}}">...</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            {{/each}}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <div class="content-row">
+                        <a style="width: 115px; margin: 0px;" class="btn" href="/inicio">Ir a inicio</a>
+                        <a style="width: 115px;; margin: 0px;" class="btn" href="/miembros/remover?id={{miembro.getId}}">Dar de baja</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

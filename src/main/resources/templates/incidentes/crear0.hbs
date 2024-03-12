@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="../css/estilos.css">
+      <title>crear.html</title>
+  </head>
+  
+  <body>
+    <div id="page-content">
+      <h2 style="text-align: center;">Monitoreo de Estado de Servicios de Transporte Público y de Establecimientos</h2>
+      <div class="center-content">
+        <div>
+          <h3 style="text-align: center;">Registrar un Incidente para: {{nombreDeServicio}}</h3>
+          <div class="form-container panel" style="min-width: 400px; max-width: 400px;">
+            <form action="" method="post">
+              <div style="display: flex; flex-direction: row; align-items: center;">
+                <label>Resumen:</label>
+                <input style="height: 100%; width: 100%; margin-left: 5px;" type="text" name="resumen" placeholder="e.g. Ascensor sin servicio; Baño sin agua; etc.">
+              </div>
+
+
+              <div style="margin-top: 10px; display: flex; flex-direction: row; align-items: center; margin-bottom: 20px;">
+                <label>Entidad:</label>
+                {{#if entidadesPosibles}}
+                <select style="width: 100%; margin-left: 5px;" name="entidad_id">
+                  <option value="-1">Seleccione una entidad</option>
+                  {{#each entidadesPosibles}}
+                  <option value="{{this.getId}}">{{this.getNombre}}</option>
+                  {{/each}}
+                </select>
+                {{/if}}
+              </div>
+
+
+              <div style="margin-top: 10px; display: flex; flex-direction: row; align-items: center; margin-bottom: 20px;">
+                <label>Comunidad:</label>
+                <select style="width: 100%; margin-left: 5px;" name="comunidad_id">
+                  <option value="-1">Sin definir</option>
+                  {{#each comunidades}}
+                  <option value="{{this.getId}}">{{this.getNombre}}</option>
+                  {{/each}}
+                </select>
+              </div>
+
+              <label style="margin-top: 20px;">Observaciones:</label>
+              <textarea name="texto" style="height: 100px; width: 100%; max-width: 100%; min-width: 100%;" placeholder="Describa aquí lo sucedido."></textarea>
+
+              {{#if error_descripcion}}
+              <label class="error-label">ERROR: {{error_descripcion}}</label>
+              {{/if}}
+
+              <input type="submit" value="Dar de alta" class="btn">
+            </form>
+          </div>
+
+          <div class="panel" style="margin-top: 20px; min-width: 400px; max-width: 400px;">
+            <div style="width: 100%; display: inline-flex;">
+              <a style="margin: 3px" class="btn" href="/inicio">Ir a inicio</a>
+              <a style="margin: 3px" class="btn" href="/incidentes/ver">Ver listado</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

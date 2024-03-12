@@ -1,0 +1,44 @@
+table {
+  width: 100%;
+  margin: auto;
+  border-collapse: collapse;
+}
+
+th, tr, td {
+  border: solid darkgray;
+}
+
+.table-row {
+  height: 2rem;
+}
+
+.table-h-row {
+  background-color: white;
+}
+
+.cell-content {
+  padding-left: 5px;
+}
+
+.table-action-btn {
+  width: 100%;
+  font-size: 20px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.table-action-btn:hover {
+  background-color: darkgray;
+}
+
+.table-action-btn:active {
+  color: white;
+  background-color: gray;
+}
+
+.actions-panel {
+  width: 100%;
+  height: 2rem;
+  display: inline-flex;
+}

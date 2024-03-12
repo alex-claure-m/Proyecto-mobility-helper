@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/crear_comunidad.css">
+</head>
+<body>
+    <header>
+        <h1>Sistema de Apoyo a Comunidades con Movilidad Reducida</h1>
+        <div class="user-info">
+            {{#if usuario}}
+            <p class="user-name">Usuario: {{usuario.getNameUser}}</p>
+            {{/if}}
+            <form action="/logoff" method="post">
+            <button class="btn-logout">Log Out</button>
+            </form>
+        </div>
+    </header>
+    <nav>
+        <a href="/inicio">Home</a>
+        <a href="/nosotros">Nosotros</a>
+        <a href="/comunidades">Comunidades</a>
+        <a href="/servicios">Servicios</a>
+    </nav>
+    <main>
+        <div class="container">
+            <h2>Crear Nueva Comunidad</h2>
+            <form method="post" action="/comunidad/crear_comunidad">
+                <label for="nombre">Nombre de Comunidad:</label>
+                <input style="width: unset;" type="text" id="nombre" name="nombre" required>
+                <button type="submit" class="btn-crear">Crear Comunidad</button>
+                {{#if creacion_error}}
+                <label style="color: crimson">ERROR: {{creacion_error}}.</label>
+                {{/if}}
+            </form>
+        </div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nosotros</title>
+    <style>
+        /* Estilos CSS */
+        /* Estilos CSS */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: linear-gradient(to bottom right, #CDFFD8, #94B9FF);
+            color: #000;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Estilos generales del layout */
+        body {
+            display: flex;
+            flex-direction: column;
+            height: 100vh; /* Ocupa toda la altura de la pantalla */
+            margin: 0;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .user-name {
+            color: #000;
+            margin-right: 20px;
+            font-weight: bold;
+        }
+
+        .btn-login,
+        .btn-logout {
+            background: #000;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            outline: none;
+        }
+
+        .btn-login:hover,
+        .btn-logout:hover {
+            background: #333;
+        }
+        nav {
+            background: #3498db;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+            font-weight: bold;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+
+
+        nav {
+            background: #3498db;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+
+        /* Estilos específicos del image-container */
+        .image-container {
+            flex-grow: 1; /* Ocupa todo el espacio disponible */
+            /* background: linear-gradient(to bottom right, #CDFFD8, #94B9FF);*/
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .image-container img {
+            max-width: 100%; /* Ajusta el ancho de la imagen al ancho del contenedor */
+        }
+
+        /* Estilos específicos del contenedor */
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            font-size: 18px;
+            line-height: 1.5;
+        }
+
+        .content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .content p {
+            margin-right: 20px;
+            flex-grow: 1;
+        }
+
+        .content img {
+            max-width: 250px;
+            height: auto;
+        }
+    </style>
+</head>
+
+<body>
+<header class="header">
+    <h1 class="header-title">Sistema de ayuda para personas con movilidad reducida</h1>
+    <div class="user-info">
+        {{#if usuario.getNameUser}}
+        <p class="user-name">Usuario: {{usuario.getNameUser}}</p>
+        {{else}}
+        <!-- No mostrar nada cuando el usuario no ha iniciado sesión -->
+        {{/if}}
+        {{#if usuario.getNameUser}}
+        <form action="/logoff" method="post">
+            <button class="btn-logout">Log Out</button>
+        </form>
+        {{else}}
+        <button class="btn-login">Log In</button>
+        {{/if}}
+    </div>
+</header>
+<nav>
+    <a href="/inicio">Home</a>
+    <a href="/nosotros">Nosotros</a>
+    <a href="/comunidades">Comunidades</a>
+    <a href="/servicios">Servicios</a>
+    <a href="/entidades">Entidades</a>
+</nav>
+
+<main>
+    <div class="container">
+        <h2>Somos Estudiantes de Ingeniería en Sistemas de Información</h2>
+        <div class="content">
+            <p>
+                Propusimos crear una aplicación destinada a ayudar a personas con movilidad reducida
+                a reportar accidentes. Este proyecto surge en un contexto académico, con la intención
+                de facilitar la comunicación y el registro de incidentes para mejorar la movilidad y la
+                seguridad de las personas con limitaciones físicas.
+            </p>
+            <img src=https://www.lavanguardia.com/andro4all/hero/2018/06/Adaptar-smartphone-persona-mayor.jpg?width=1200&aspect_ratio=16:9 alt="Persona usando dispositivo de asistencia">
+        </div>
+    </div>
+</main>
+</body>
+
+</html>

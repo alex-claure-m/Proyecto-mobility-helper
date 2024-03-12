@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="../css/estilos.css">
+      <link rel="stylesheet" href="../css/listados.css">
+      <title>entidad-prestadora.html</title>
+  </head>
+  
+  <body>
+    <div id="page-content">
+      <h2 style="text-align: center;">Monitoreo de Estado de Servicios de Transporte Público y de Establecimientos</h2>
+      <div class="center-content">
+        <div>
+          <h3 style="text-align: center;">Entidad Prestadora: {{entidadPrestadora.getNombre}}</h3>
+          <div class="panel" style="min-width: 400px; max-width: 400px;">
+            <div style="display: flex;">
+              <label>Usuario:</label>
+              <a style="margin-left: 5px;" class="text-truncate" href="">{{entidadPrestadora.getUsuarioAsociado.getNameUser}}</a>
+            </div>
+
+            <div style="display: flex;">
+              <label>Rubro:</label>
+              <label style="margin-left: 5px;" class="text-truncate">{{entidadPrestadora.getRubro}}</label>
+            </div>
+
+            <div style="display: flex;">
+              <label>País de origen:</label>
+              <label style="margin-left: 5px;" class="text-truncate">{{entidadPrestadora.getPais}}</label>
+            </div>
+          </div>
+
+          <div class="panel" style="margin-top: 10px; min-width: 400px; max-width: 200px; max-height: 400px;">
+            <div style="display: flex; align-items: baseline; justify-content: space-around;">
+              <h3 style="text-align: center; margin-top: 0px;">Entidades asociadas</h3>
+              <a href="/prestadora/asociar?id={{entidadPrestadora.getId}}">Agregar</a>
+            </div>
+            <div style="width: 100%; overflow-y: scroll; max-height: 200px;">
+              <table>
+                <tbody>
+                {{#each entidades}}
+                  <tr class="table-row">
+                    <td style="min-width: 200px; max-width: 200px"> <div class="cell-content text-truncate">{{this.getNombre}}</div> </td>
+                    <td>
+                      <div class="actions-panel">
+                        <a class="table-action-btn" href="/entidades/ver?id={{this.getId}}">...</a>
+                      </div>
+                    </td>
+                  </tr>
+                {{/each}}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

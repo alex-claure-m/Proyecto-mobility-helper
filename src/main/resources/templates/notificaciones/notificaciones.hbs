@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/inicio.css">
+    <link rel="stylesheet" href="../css/ver_notificaciones.css">
+</head>
+<body>
+    <header>
+        <h1>Sistema de Apoyo a Comunidades con Movilidad Reducida</h1>
+        <div class="user-info">
+            <p class="user-name">Usuario: {{usuario.getNameUser}}</p>
+            <form action="/logoff" method="post">
+            <button class="btn-logout">Log Out</button>
+            </form>
+        </div>
+    </header>
+    <nav>
+        <a href="/inicio">Home</a>
+        <a href="/nosotros">Nosotros</a>
+        <a href="/comunidades">Comunidades</a>
+        <a href="/servicios">Servicios</a>
+    </nav>
+    <main class="main">
+        <div id="page-content" class="page-content">
+            <h2 class="section-title" style="text-align: center;">Monitoreo de Estado de Servicios de Transporte Público y de Establecimientos</h2>
+            <div class="content">
+                <div class="list">
+                    <h3 class="list-title" style="text-align: center;">Listado de Notificaciones recibidas</h3>
+                    <table class="table" style="border: 2px solid #d1d1d1; border-collapse: collapse; border-radius: 10px;">
+                        <thead>
+                            <tr class="table-row">
+                                <th class="table-header" style="width: 90%;">Descripción</th>
+                                <th class="table-header" style="width: 10%;"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {{#each notificaciones}}
+                            <tr class="table-row">
+                                <td style="text-align: start; {{#if this.getFueLeido}}{{else}}font-weight: bold{{/if}}" class="table-data text-truncate">{{this.getTexto}}</td>
+                                <td class="table-data">
+                                    <div class="table-action">
+                                        <a class="btn" href="/notificaciones/ver?id={{this.getId}}">VER</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="panel">
+                    <div class="panel-content" style="margin-top: 20px;">
+                        <a href="/inicio" class="btn">Ir a inicio</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

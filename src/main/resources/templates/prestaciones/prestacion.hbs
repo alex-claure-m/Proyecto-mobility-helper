@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/ver_prestacion.css">
+    <link rel="stylesheet" href="/css/inicio.css">
+</head>
+<body>
+    <header>
+        <h1>Sistema de Apoyo a Comunidades con Movilidad Reducida</h1>
+        <div class="user-info">
+        {{#if usuario}}
+            <p class="user-name">Usuario: {{usuario.getNameUser}}</p>
+        {{/if}}
+            <form action="/logoff" method="post">
+            <button class="btn-logout">Log Out</button>
+            </form>
+        </div>
+    </header>
+    <nav>
+        <a href="/inicio">Home</a>
+        <a href="/nosotros">Nosotros</a>
+        <a href="/comunidades">Comunidades</a>
+        <a href="/servicios">Servicios</a>
+    </nav>
+    <main>
+        <div id="page-content">
+            <h2>Monitoreo de Estado de Servicios de Transporte Público y de Establecimientos</h2>
+            <div class="content-wrapper">
+                <div class="panel" style="border-collapse: unset; border-style: solid; border-collapse: collapse; border-color: rgba(0, 0, 0, 0.1); border-radius: 5px; border-width: 2px;">
+                    <h3 style="margin-top: 5px;">Ver Prestación de servicio</h3>
+                    <div class="content-row">
+                        <label>Servicio:</label>
+                        <label>{{prestacionServicio.nombreDelServicio}}</label>
+                    </div>
+
+                    <div class="content-row">
+                        <label>Establecimiento:</label>
+                        <a href="/establecimientos/ver?id={{prestacionServicio.getUnEstablecimientoEnParticular.getId}}">{{prestacionServicio.nombreDelEstablecimiento}}</a>
+                    </div>
+
+                    <div class="content-row">
+                        <label>Estado:</label>
+                        {{#if estaDisponible}}
+                        <label style="text-decoration: underline; color: green">DISPONIBLE</label>
+                        {{else}}
+                        <label style="text-decoration: underline; color: red">NO DISPONIBLE</label>
+                        {{/if}}
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <div class="content-row">
+                        <h3 style="margin-bottom: 0px;">Incidentes</h3>
+                    </div>
+                    <div>
+                        <table class="data-table">
+                            <tbody>
+                            {{#each incidentes}}
+                                <tr>
+                                    <td>{{this.descripcionDelIncidente}} {{#if this.fueCerrado}}(CERRADO){{/if}}</td>
+                                    <td style="width: 10%;">
+                                        <div>
+                                            <a class="btn" style="padding: 0px 15px;" href="/incidentes/ver?id={{this.getId}}">...</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            {{/each}}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <div class="content-row">
+                        <a style="width: 125px;margin-right: 2.5px;" class="btn" href="/inicio">Ir a inicio</a>
+                        <a style="width: 125px;margin-left: 2.5px;" class="btn" href="/prestaciones/remover?id={{prestacionServicio.getId}}">Dar de baja</a>
+                    </div>
+                    <div style="margin-top: 5px;" class="content-row">
+                        <a style="width: 300px;" class="btn" href="/incidentes/abrir?prestacion_id={{prestacionServicio.getId}}">Abrir incidente</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

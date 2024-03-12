@@ -1,0 +1,132 @@
+/* Estilos CSS */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background: linear-gradient(to bottom right, #CDFFD8, #94B9FF);
+    color: #000;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Estilos generales del layout */
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Ocupa toda la altura de la pantalla */
+    margin: 0;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+}
+
+.user-name {
+    color: #000;
+    margin-right: 20px;
+    font-weight: bold;
+}
+
+.btn-login,
+.btn-logout {
+    background: #000;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    outline: none;
+}
+
+.btn-login:hover,
+.btn-logout:hover {
+    background: #333;
+}
+nav {
+    background: #3498db;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: bold;
+}
+
+main {
+    padding: 20px;
+}
+
+
+
+nav {
+    background: #3498db;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+/* Estilos específicos del image-container */
+.image-container {
+    flex-grow: 1; /* Ocupa todo el espacio disponible */
+    /* background: linear-gradient(to bottom right, #CDFFD8, #94B9FF);*/
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-container img {
+    max-width: 100%; /* Ajusta el ancho de la imagen al ancho del contenedor */
+}
+
+/* Estilos CSS para la tabla */
+table {
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 1px solid #ccc; /* Borde exterior de la tabla */
+    border-radius: 5px; /* Bordes redondeados */
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #ddd; /* Bordes de las celdas */
+    background-color: #f5f5f5; /* Color de fondo gris */
+}
+
+/* Estilos para el encabezado de la tabla */
+th {
+    background-color: #666; /* Color de fondo para el encabezado */
+    color: #fff; /* Texto en el encabezado */
+    border-bottom: 2px solid #444; /* Borde inferior más grueso en el encabezado */
+}
+
+/* Estilos para las filas impares */
+tr:nth-child(odd) {
+    background-color: #e5e5e5; /* Color de fondo para filas impares */
+}
+
+/* Estilos para el botón "+" en las celdas */
+.table-plus-btn {
+    background-color: #4caf50; /* Color de fondo del botón */
+    color: #fff; /* Color de texto en el botón */
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px; /* Bordes redondeados para el botón */
+    cursor: pointer;
+}
+
+/* Estilos para el botón "+" al pasar el mouse */
+.table-plus-btn:hover {
+    background-color: #45a049; /* Color de fondo al pasar el mouse */
+}

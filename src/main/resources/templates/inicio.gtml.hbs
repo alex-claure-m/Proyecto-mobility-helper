@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+			<meta charset="utf-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1">
+			<link rel="stylesheet" href="/css/estilos.css">
+			<link rel="stylesheet" href="/css/elements.css">
+			<title>DDS/TPA - Servicios</title>
+	</head>
+  
+	<body>
+		<div id="page-content" style="margin-top: 50px;">
+			<h2 style="text-align: center;">Monitoreo de Estado de Servicios de Transporte Público y de Establecimientos</h2>
+			<div id="main-container">
+				<div id="info-panel" class="panel">
+				<h3 style="position: absolute; top: 70px; background: white;">Logueado como: <i>{{usuario.getNameUser}}</i></h3>
+				<div id="info-panel-sub">
+					<img src="img/usuario.png" id="imagen-perfil" alt="">
+						<div id="info-panel-data">
+							<div class="info-text-block">
+								<label class="text-truncate">Nombre: <i>{{miembro.getNombre}}</i></label>
+							</div>
+
+							<div class="info-text-block">
+								<label class="text-truncate">Apellido: <i>{{miembro.getApellido}}</i></label>
+							</div>
+
+							<div class="info-text-block">
+								<label class="text-truncate">Email: <i>{{miembro.getCorreoElectronico}}</i></label>
+							</div>
+
+							<div class="info-text-block">
+								<label class="text-truncate">Teléfono: <i>{{#if miembro.getNroWhatsapp}} {{miembro.getNroWhatsapp}} {{else}} - {{/if}}</i></label>
+							</div>
+						</div>
+					</div>
+
+					<div id="info-panel-buttons">
+						<button type="button" name="editar" class="btn">Editar perfil</button>
+						<div style="margin: 5px;"></div>
+						<button type="button" name="config" class="btn">Configuración</button>
+					</div>
+				</div>
+
+				<div style="margin: 30px;"></div>
+
+				<div class="panel">
+					<h3 style="position: absolute; top: 375px; background: white;">Opciones</h3>
+					<div id="actions-panel-sub">
+						<div class="actions-panel-buttons">
+							<a href="incidentes" class="btn">Ver Incidentes</a>
+							<div style="margin: 10px;"></div>
+							<a href="/incidente/abrir" class="btn">Abrir Incidente</a>
+							<div style="margin: 10px;"></div>
+							<button type="button" class="btn">Cerrar Incidente</button>
+							{{#if admin_plataforma}}
+							<div style="margin: 10px;"></div>
+							<button type="button" class="btn btn-adm">Administrar usuarios</button>
+							{{/if}}
+						</div>
+					</div>
+				</div>
+
+				<div style="margin: 30px;"></div>
+
+				<div class="panel">
+					<form action="/logoff" method="post">
+						<button type="submit" class="btn">Salir</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

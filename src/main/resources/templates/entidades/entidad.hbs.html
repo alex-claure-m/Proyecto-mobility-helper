@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="../css/estilos.css">
+      <link rel="stylesheet" href="../css/listados.css">
+      <title>entidad.html</title>
+  </head>
+  
+  <body>
+    <div id="page-content">
+      <h2 style="text-align: center;">Monitoreo de Estado de Servicios de Transporte Público y de Establecimientos</h2>
+      <div class="center-content">
+        <div>
+          <h3 style="text-align: center;">Ver Entidad</h3>
+          <div class="panel" style="min-width: 400px; max-width: 400px;">
+            <div style="display: flex;">
+              <label>Nombre:</label>
+              <label style="margin-left: 5px;" class="text-truncate" href="">{{entidad.getNombre}}</label>
+            </div>
+
+            <div style="display: flex;">
+              <label>Tipo:</label>
+              <label style="margin-left: 5px;" class="text-truncate" href="">{{entidad.getTipoDeEntidad}}</label>
+            </div>
+
+            <div style="display: flex;">
+              <label>Localización:</label>
+              <label style="margin-left: 5px;" class="text-truncate">{{entidad.lugarDeActividad}}</label>
+            </div>
+          </div>
+
+          <div class="panel" style="margin-top: 10px; min-width: 400px; max-width: 200px; max-height: 400px;">
+            <div style="display: flex; align-items: baseline; justify-content: space-around;">
+              <h3 style="text-align: center; margin-top: 0px;">Establecimientos</h3>
+              <a href="/entidades/asociar?id={{entidad.getId}}">Agregar</a> {{!Prestadora y Administrador de Plataforma}}
+            </div>
+            <div style="width: 100%; overflow-y: scroll; max-height: 200px;">
+              <table>
+                <tbody>
+                {{#each establecimientos}}
+                  <tr class="table-row">
+                    <td style="min-width: 200px; max-width: 200px"> <div class="cell-content text-truncate">{{this.getNombre}}</div> </td>
+                    <td>
+                      <div class="actions-panel">
+                        <a class="table-action-btn" href="/establecimientos/ver?id={{this.getId}}">...</a>
+                      </div>
+                    </td>
+                  </tr>
+                {{/each}}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="panel" style="margin-top: 10px; min-width: 400px; max-width: 400px;">
+            <div style="width: 100%; display: inline-flex;">
+              <a style="margin: 3px" class="btn" href="/inicio">Ir a inicio</a>
+              <a style="margin: 3px" class="btn" href="/entidades/ver">Ver entidades</a>
+            </div>
+            <div style="width: 100%; display: inline-flex;">
+              <a style="margin: 3px" class="btn" href="/entidad/remover?id={{entidad.getId}}">Dar de baja</a> {{!Administrador de Plataforma}}
+              <a style="margin: 3px" class="btn" href="/entidad/modificar?id={{entidad.getId}}">Modificar</a> {{!Prestadora y Administrador de Plataforma}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

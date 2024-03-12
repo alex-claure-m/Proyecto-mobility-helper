@@ -1,0 +1,137 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Barlow', sans-serif;
+  overflow: hidden; /* Para ocultar cualquier desbordamiento de contenido */
+  position: relative; /* Establecer la posición relativa en el cuerpo */
+}
+
+.background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.background-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ajustar la imagen al tamaño del contenedor manteniendo su relación de aspecto */
+}
+
+
+.container {
+  background: linear-gradient(to bottom right, #CDFFD8, #94B9FF);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  position: relative; /* Establecer la posición relativa en el contenedor */
+  z-index: 0; /* Colocar el contenido detrás de la imagen */
+ }
+/*
+.container {
+  background: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 400px;
+  margin: 0 auto; /* Centrar horizontalmente el contenedor 
+  position: relative;
+  z-index: 1;
+}
+*/
+
+img {
+  /*  display: block;
+   margin-left: auto;
+   margin-right: auto;
+   max-width: 100%;
+   height: auto;
+   backdrop-filter: blur(50px); Ajustar el valor de blur según el efecto deseado */
+   max-width: 100%;
+   height: auto;
+   margin: 0 auto; /* Centrar horizontalmente la imagen */
+   backdrop-filter: blur(5px); /* Aplicar un efecto de desenfoque a la imagen */
+   position: absolute; /* Establecer la posición absoluta en la página */
+   top: 0; /* Colocar la imagen en la parte superior de la página */
+   left: 0; /* Colocar la imagen en la parte izquierda de la página */
+   width: 100%; /* Asegurarse de que la imagen ocupe todo el ancho */
+   height: 100%; /* Asegurarse de que la imagen ocupe toda la altura */
+   z-index: 1; /* Colocar la imagen detrás del contenido */
+ }
+ 
+header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+h1 {
+  color: #000;
+  font-size: 2rem;
+}
+
+form {
+  background: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 400px;
+  margin: 0 auto; /* Centrar horizontalmente el formulario */
+}
+
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: #000;
+  font-weight: 700;
+}
+
+input {
+  width: 90%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+button {
+  background-color: #000;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #333;
+}
+
+.registration-link {
+  font-size: 14px; /* Tamaño de fuente para el párrafo con la clase registration-link */
+}
+
+/* Agrega este código CSS en tu archivo de estilos (login.css) o en la sección <style> de tu HTML */
+select {
+  padding: 5px; /* Espaciado interior para mejor apariencia */
+  border: 1px solid #ccc; /* Borde del select */
+  border-radius: 5px; /* Esquinas curvadas */
+  width: 100%; /* Ancho completo del contenedor */
+  margin-right: 4px; /* Agregar margen derecho de 4px */
+}
+
+/* Estilo adicional cuando el select está enfocado (opcional) */
+select:focus {
+  border-color: #007bff; /* Cambia el color del borde cuando está enfocado */
+  outline: none; /* Elimina el resplandor azul predeterminado (si lo hay) */
+}
+button[type="submit"] {
+  margin-top: 10px; /* Agregar espacio superior entre el select y el botón */
+}
+

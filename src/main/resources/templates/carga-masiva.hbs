@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/carga-masiva.css">
+    <!-- <link rel="stylesheet" href="/css/listados.css"> -->
+    <title>carga-masiva.html</title>
+</head>
+
+<body>
+        <header class="header">
+            <h1 class="header-title">Sistema de Apoyo a Comunidades con Movilidad Reducida</h1>
+            <div class="user-info">
+                {{#if usuario.getNameUser}}
+                    <p class="user-name">Usuario: {{usuario.getNameUser}}</p>
+                {{else}}
+                    <!-- No mostrar nada cuando el usuario no ha iniciado sesión -->
+                {{/if}}
+                {{#if usuario.getNameUser}}
+                    <form action="/logoff" method="post">
+                        <button class="btn-logout">Log Out</button>
+                    </form>
+                {{else}}
+                    <button class="btn-login">Log In</button>
+                {{/if}}
+            </div>
+        </header>
+        <main>
+            <div id="page-content">
+                <h2>Monitoreo de Estado de Servicios de Transporte Público y de Establecimientos</h2>
+                <div>
+                    <div>
+                        <h4>Carga masiva de Entidades Prestadoras y Organismos de Control</h4>
+                        <div>
+                            <h4>
+                                Cargar
+                                {{#if prestadora}}
+                                    Entidades Prestadoras
+                                {{/if}}
+                                {{#if reguladora}}
+                                    Organismos de Control
+                                {{/if}}
+                            </h4>
+                            <div>
+
+                                <form method="post" enctype="multipart/form-data">
+                                    <input type="file" name="uploaded_file" accept=".csv">
+                                    <div></div>
+                                    {{#if error_descripcion}}
+                                        <label>ERROR: {{error_descripcion}}</label>
+                                    {{/if}}
+                                    <div></div>
+                                    <button>Cargar</button>
+
+                                </form>
+
+                            </div>
+                        </div>
+
+                        <div class="list-table">
+                            <h3>
+                                Listado de
+                                {{#if prestadora}}
+                                    Entidades Prestadoras
+                                {{/if}}
+                                {{#if reguladora}}
+                                    Organismos de Control
+                                {{/if}}
+                            </h3>
+                            <div>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            {{#if prestadora}}
+                                                <th>Nombre</th>
+                                                <th>Rubro</th>
+                                                <th>País de Origen</th>
+                                            {{/if}}
+                                            {{#if reguladora}}
+                                                <th>Abreviatura</th>
+                                                <th>Nombre completo</th>
+                                            {{/if}}
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {{#if prestadora}}
+                                            {{#each entidadesPrestadoras}}
+                                                <tr>
+                                                    <td>{{this.getNombre}}</td>
+                                                    <td>{{this.getRubro}}</td>
+                                                    <td>{{this.getPais}}</td>
+                                                    <td>
+                                                        <div>
+                                                            <a href="/prestadora/{{this.getId}}">...</a>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            {{/each}}
+                                        {{/if}}
+
+                                        {{#if reguladora}}
+                                            {{#each organismosDeControl}}
+                                                <tr>
+                                                    <td>{{this.getAbreviatura}}</td>
+                                                    <td>{{this.getNombreCompleto}}</td>
+                                                    <td>
+                                                        <div>
+                                                            <a href="/reguladora/{{this.getId}}">...</a>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            {{/each}}
+                                        {{/if}}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+</body>
+</html>

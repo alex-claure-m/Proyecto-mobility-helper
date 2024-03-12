@@ -1,0 +1,143 @@
+/* Estilos CSS */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background: linear-gradient(to bottom right, #CDFFD8, #94B9FF);
+    color: #000;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Estilos generales del layout */
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    margin: 0;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+}
+
+.user-name {
+    color: #000;
+    margin-right: 20px;
+    font-weight: bold;
+}
+
+.btn-login,
+.btn-logout {
+    background: #000;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    outline: none;
+}
+
+.btn-login:hover,
+.btn-logout:hover {
+    background: #333;
+}
+
+nav {
+    background: #3498db;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: bold;
+}
+
+/* Estilos del título "Comunidades" */
+
+.main-container {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* Estilos del título "Comunidades" */
+.title {
+    text-align: center; /* Centrar el título horizontalmente */
+    font-size: 24px;
+    margin-top: 20px; /* Espacio entre el título y la tabla */
+}
+
+/* Estilos de la tabla de comunidades */
+.community-table {
+    width: 100%; /* Asegurar que la tabla ocupe todo el ancho del contenedor */
+    border-collapse: collapse; /* Colapsar los bordes de la tabla */
+    margin-top: 10px; /* Espacio entre el título y la tabla */
+}
+/* Estilos de las filas y celdas de la tabla */
+.community-table th,
+.community-table td {
+    border: 1px solid #ccc; /* Agregar bordes a las celdas de la tabla */
+    padding: 10px; /* Espacio interno en las celdas */
+    text-align: center; /* Centrar el contenido de las celdas horizontalmente */
+}
+
+/* Estilos de la tabla */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    background-color: #f2f2f2; /* Fondo gris claro */
+    border: 1px solid #ccc;
+}
+
+th {
+    background-color: #666; /* Fondo gris oscuro para encabezados */
+    color: #fff; /* Texto blanco para encabezados */
+}
+
+/* Hover de filas */
+tr:hover {
+    background-color: #ddd; /* Fondo gris claro al pasar el mouse sobre las filas */
+}
+
+/* Estilos del título "Comunidad" */
+.title {
+    text-align: center;
+    font-size: 24px; /* Tamaño de fuente más grande */
+    margin-bottom: 20px; /* Espacio entre el título y la tabla */
+}
+
+/* Estilos del botón "+" */
+.btn-add {
+    background: #000;
+    color: #fff;
+    border: none;
+    padding: 10px 20px; /* Ajusta el padding para hacer un botón rectangular */
+    border-radius: 5px; /* Bordes circulares con radio de 5px */
+    cursor: pointer;
+    font-weight: bold;
+    outline: none;
+}
+
+.btn-add:hover {
+    background: #333;
+}

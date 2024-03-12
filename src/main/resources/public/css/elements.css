@@ -1,0 +1,27 @@
+/*inicio.html*/
+#main-container {
+  margin: auto;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+#info-panel-sub {
+  display: flex;
+}
+
+#imagen-perfil {
+  width: 150px;
+  margin: 10px 10px 10px 0px;
+}
+
+#info-panel-data {
+  max-width: 205px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+#info-panel-buttons {
+  display: flex;
+}

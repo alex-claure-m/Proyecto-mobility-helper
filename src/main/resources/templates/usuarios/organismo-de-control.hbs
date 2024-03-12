@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/organismo-de-control.css">
+    <!-- <link rel="stylesheet" href="../Maquetado 3/css/listados.css"> -->
+    <title>organismo-de-control.html</title>
+  </head>
+  <body>
+    <header class="header">
+        <h1 class="header-title">Sistema de Apoyo a Comunidades con Movilidad Reducida</h1>
+        <div class="user-info">
+            {{#if usuario.getNameUser}}
+                <p class="user-name">Usuario: {{usuario.getNameUser}}</p>
+            {{else}}
+                <!-- No mostrar nada cuando el usuario no ha iniciado sesión -->
+            {{/if}}
+            {{#if usuario.getNameUser}}
+                <form action="/logoff" method="post">
+                    <button class="btn-logout">Log Out</button>
+                </form>
+            {{else}}
+                <button class="btn-login">Log In</button>
+            {{/if}}
+        </div>
+    </header>
+
+    <nav class="navigation">
+        <a href="/home">Home</a>
+        <a href="/nosotros">Nosotros</a>
+        <a href="/comunidades">Comunidades</a>
+        <a href="/servicios">Servicios</a>
+        <a href="/entidades">Entidades</a>
+    </nav>
+    <main>
+      <div id="page-content">
+          <h2>Monitoreo de Estado de Servicios de Transporte Público y de Establecimientos</h2>
+          <div>
+              <h3>Organismo de Control: {{organismoDeControl.getAbreviatura}}</h3>
+              <div class="table-wrapper">
+                  <table class="info-table">
+                      <tbody>
+                          <tr>
+                              <td>Usuario:</td>
+                              <td>{{organismoDeControl.getUsuarioAsociado.getNameUser}}</td>
+                          </tr>
+                          <tr>
+                              <td>Nombre completo:</td>
+                              <td>{{organismoDeControl.getNombreCompleto}}</td>
+                          </tr>
+                      </tbody>
+                  </table>
+              </div>
+          </div>
+
+          <div>
+              <h3>Entidades monitoreadas</h3>
+              <a href="/reguladora/asociar?id={{organismoDeControl.getId}}" class="btn-agregar">Agregar</a>
+          </div>
+          <div class="table-wrapper">
+              <table class="info-table">
+                  <tbody>
+                      {{#each entidades}}
+                      <tr>
+                          <td>{{this.getNombre}}</td>
+                          <td>
+                              <a href="/entidades/ver?id={{this.getId}}" class="btn-acciones">...</a>
+                          </td>
+                      </tr>
+                      {{/each}}
+                  </tbody>
+              </table>
+          </div>
+      </div>
+  </main>
+  </body>
+</html>

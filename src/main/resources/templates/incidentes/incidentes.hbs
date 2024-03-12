@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/lista_incidentes.css">
+    <link rel="stylesheet" href="/css/inicio.css">
+</head>
+<body>
+    <header>
+        <h1>Sistema de Apoyo a Comunidades con Movilidad Reducida</h1>
+        <div class="user-info">
+            <p class="user-name">Usuario: {{usuario.getNameUser}}</p>
+            <form action="/logoff" method="post">
+            <button class="btn-logout">Log Out</button>
+            </form>
+        </div>
+    </header>
+    <nav>
+        <a href="/inicio">Home</a>
+        <a href="/nosotros">Nosotros</a>
+        <a href="/comunidades">Comunidades</a>
+        <a href="/servicios">Servicios</a>
+    </nav>
+
+    <div id="page-content" style="padding: unset">
+        <!--h2>Monitoreo de Estado de Servicios de Transporte Público y de Establecimientos</h2-->
+        <div>
+            <div>
+                <h3>Listado de Incidentes reportados en el Sistema</h3>
+                <table style="border: 2px solid #d1d1d1; border-collapse: collapse; border-radius: 10px;">
+                <thead>
+                  <tr class="table-h-row">
+                    <th class="table-h" style="width: 35%;"> <span>Resumen</span> </th>
+                    <th class="table-h" style="width: 30%;"> <span>Prestación</span> </th>
+                    <th class="table-h" style="width: 20%;"> <span>Fecha/Hora</span> </th>
+                    <th class="table-h" style="width: 10%;"> <span>Estado</span> </th>
+                    <th class="table-h" style="width: 5%;"> <span></span> </th>
+                  </tr>
+                </thead>
+                    <tbody>
+                    {{#each incidentes}}
+                    <tr>
+                        <td class="text-truncate">{{this.descripcionDelIncidente}}</td>
+                        <td class="text-truncate">{{this.nombreDelServicio2}}</td>
+                        <td class="text-truncate">{{this.horaDelIncidente}}</td>
+                        <td class="text-truncate">{{#if this.fueCerrado}}CERRADO{{else}}NO CERRADO{{/if}}</td>
+                        <td style="max-width: 55px;">
+                            <div class="actions-panel">
+                                <a class="table-action-btn" href="/incidentes/ver?id={{this.getId}}">...</a>
+                            </div>
+                        </td>
+                    </tr>
+                    {{/each}}
+                    </tbody>
+                </table>
+            </div>
+
+            <div style="margin-top: 30px;" class="panel">
+                <div class="panel-content">
+                    <a style="text-decoration: none;" class="btn-login" href="/inicio">Ir a inicio</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

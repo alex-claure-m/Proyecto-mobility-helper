@@ -1,0 +1,93 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilos del encabezado */
+.header {
+    background: linear-gradient(to bottom right, #CDFFD8, #94B9FF);
+    color: #000;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-title {
+    margin: 0;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+}
+
+.user-name {
+    color: #000;
+    margin-right: 20px;
+    font-weight: bold;
+}
+
+.btn-login,
+.btn-logout {
+    background: #000;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    outline: none;
+}
+
+.btn-login:hover,
+.btn-logout:hover {
+    background: #333;
+}
+
+main {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+}
+
+main > div {
+    margin-top: 20px;
+}
+
+main > div > div {
+    border: 1px solid #ccc;
+    padding: 20px;
+}
+
+main form button,
+main a {
+    background-color: #4CAF50; /* Cambia el color del botón según tus preferencias */
+    color: #fff;
+    padding: 15px 30px;
+    border-radius: 5px; /* Esquinas redondeadas */
+    margin-top: 20px;
+    display: inline-block;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    width: 12%; /* Cambia el ancho del botón al 12% de la pantalla */
+}
+main form button:hover,
+main a:hover {
+    background-color: #666;
+}
+
+main > div > div label {
+    font-weight: bold;
+}
+
+main > div > div label:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+main > div > div label:not(:first-child) {
+    display: block;
+    margin-top: 15px;
+}

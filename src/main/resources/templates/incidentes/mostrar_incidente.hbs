@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="../css/inicio.css">
+        <style>
+            /* Estilos personalizados */
+            body {
+                font-family: Arial, sans-serif;
+                text-align: center;
+                background-color: #f5f5f5;
+            }
+            .container {
+                background-color: #fff;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                padding: 20px;
+                margin: 20px auto;
+                width: 80%;
+                max-width: 600px;
+            }
+            h2 {
+                font-weight: bold;
+                color: #333;
+            }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-top: 15px;
+            }
+            table, th, td {
+                border: 1px solid #ccc;
+            }
+            th {
+                background-color: #f2f2f2;
+            }
+            th, td {
+                padding: 8px;
+                text-align: left;
+            }
+            button {
+                background-color: #007BFF;
+                color: #fff;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 5px;
+                cursor: pointer;
+                width: 150px;
+            }
+            button:hover {
+                background-color: #0056b3;
+            }
+        </style>
+    </head>
+<body>
+    <header>
+        <h1>Sistema de Apoyo a Comunidades con Movilidad Reducida</h1>
+        <div class="user-info">
+            <form action="/logoff" method="post">
+            <button class="btn-logout">Log Out</button>
+            </form>
+        </div>
+    </header>
+     <nav>
+        <a href="/inicio">Home</a>
+        <a href="/nosotros">Nosotros</a>
+        <a href="/comunidades">Comunidades</a>
+        <a href="/servicios">Servicios</a>
+    </nav>
+    <div class="container">
+        <h2 style="margin-top: 5px;">Detalles del Incidente</h2>
+        <hr>
+
+        <table>
+            <tr>
+                <th>Descripción:</th>
+                <td>{{incidente.descripcionDelIncidente}}</td>
+            </tr>
+            <tr>
+                <th>Descripción Completa:</th>
+                <td style="overflow-x: scroll; max-width: 400px;">{{incidente.getDescripcion2}}</td>
+            </tr>
+            <tr>
+                <th>Abierto por:</th>
+                <td>{{incidente.nombreDeQuienAbrio}}</td>
+            </tr>
+            <tr>
+                <th>Horario de Apertura:</th>
+                <td>{{incidente.horaDelIncidente}}</td>
+            </tr>
+
+            {{#if incidente.fueCerrado}}
+            <tr>
+               <th>Horario de Cierre:</th>
+                <td>{{incidente.horaDeCierreDelIncidente}}</td>
+            </tr>
+            {{/if}}
+        </table>
+
+        <div style="margin-top: 10px; display:flex; flex-direction: column">
+        {{#if puedeCerrarse}}
+        <form method="post" action="/incidentes/cerrar?id={{incidente.getId}}">
+            <button name="cerrar">Cerrar Incidente</button>
+        </form>
+        {{/if}}
+        <form method="get" action="/inicio">
+            <button style="margin-top: 5px;">Ir a inicio</button>
+        </form>
+        </div>
+    </div>
+</body>
+</html>
+

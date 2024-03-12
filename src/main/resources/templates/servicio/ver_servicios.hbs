@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicios</title>
+    <link rel="stylesheet" href="/css/ver_servicios.css">
+</head>
+<body>
+    <header>
+        <h1>Sistema para Personas con Discapacidad</h1>
+        <div class="user-info">
+           {{#if usuario.getNameUser}}
+                    <p class="user-name">Usuario: {{usuario.getNameUser}}</p>
+                {{else}}
+                    <!-- No mostrar nada cuando el usuario no ha iniciado sesión -->
+                {{/if}}
+                {{#if usuario.getNameUser}}
+                    <form action="/logoff" method="post">
+                    <button class="btn-logout">Log Out</button>
+                    </form>
+                {{else}}
+                    <button class="btn-login">Log In</button>
+                {{/if}}
+        </div>
+    </header>
+    <nav>
+        <a href="/home">Home</a>
+        <a href="/nosotros">Nosotros</a>
+        <a href="/comunidad">Comunidad</a>
+        <a href="/servicios">Servicios</a>
+
+    </nav>
+    <main class="main-container">
+        <h2 class="title">Servicios</h2>
+        <table class="service-table">
+            <thead>
+
+                <tr>
+                    <th>Nombre del Servicio</th>
+                    <th>Prestaciones</th>
+                    <th>Comunidad Asociada</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each servicios}}
+                <tr>
+                    <td>{{this.getNombre}}</td>
+                    <td>Prestación 1, Prestación 2, Prestación 3</td>
+                    <td>{{this.getComunidadAsociada}}</td>
+                    <td><a href="/detalles-servicio/{{this.getId}}"><button class="btn-add">+</button></a></td>
+                </tr>
+
+                 {{/each}}
+            </tbody>
+
+        </table>
+    </main>
+</body>
+</html>

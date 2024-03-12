@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Comunidades</title>
+    <link rel="stylesheet" href="/css/crear_comunidad.css">
+</head>
+<body>
+    <header>
+        <h1>Gestión de Comunidades</h1>
+        <div class="user-info">
+           {{#if usuario.getNameUser}}
+                    <p class="user-name">Usuario: {{usuario.getNameUser}}</p>
+                {{else}}
+                    <!-- No mostrar nada cuando el usuario no ha iniciado sesión -->
+                {{/if}}
+                {{#if usuario.getNameUser}}
+                    <form action="/logoff" method="post">
+                    <button class="btn-logout">Log Out</button>
+                    </form>
+                {{else}}
+                    <button class="btn-login">Log In</button>
+                {{/if}}
+        </div>
+    </header>
+    <nav>
+        <a href="/inicio">Home</a>
+        <a href="/nosotros">Nosotros</a>
+        <a href="/comunidades">Comunidades</a>
+        <a href="/servicios">Servicios</a>
+    </nav>
+    <main>
+        <div class="container">
+            <h2>Crear Nueva Servicio</h2>
+            <form method="post" action="/servicio/crear_servicio">
+                <label for="nombre">Nombre de Comunidad:</label>
+                <input type="text" id="nombre" name="nombre" required>
+                <button type="submit" class="btn-crear">Crear Servicio</button>
+            </form>
+        </div>
+    </main>
+</body>
+</html>
